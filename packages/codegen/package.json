@@ -1,0 +1,19 @@
+{
+  "name": "@prosspecta/codegen",
+  "version": "0.0.0",
+  "scripts": {
+    "generate": "graphql-codegen"
+  },
+  "exports": {
+    ".": "./src/graphql.ts",
+    "./graphql": "./src/index.ts"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^5.0.6"
+  },
+  "devDependencies": {
+    "@prosspecta/tsconfig": "workspace:*",
+    "@types/node": "^20",
+    "typescript": "^5.7.3"
+  }
+}

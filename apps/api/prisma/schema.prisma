@@ -1,0 +1,192 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+  output   = "./pothos-types.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id String @id @default(uuid())
+
+  name     String
+  slug     String  @unique
+  isActive Boolean @default(true) @map("is_active")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users     User[]
+  leads     Lead[]
+  contacts  Contact[]
+  pipelines Pipeline[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@map("organizations")
+}
+
+model User {
+  id String @id @default(uuid())
+
+  name     String
+  email    String
+  role     Role    @default(USER)
+  isActive Boolean @default(true) @map("is_active")
+
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  authTokens        AuthToken[]
+  assignedPipelines Pipeline[]  @relation("AssignedUser")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([email, organizationId])
+  @@index([organizationId])
+  @@index([email])
+  @@index([isActive])
+  @@map("users")
+}
+
+model AuthToken {
+  id String @id @default(uuid())
+
+  token          String   @unique
+  secret         String?  @unique
+  expirationDate DateTime @map("expiration_date")
+  isRevoked      Boolean  @default(false) @map("is_revoked")
+  isUsed         Boolean  @default(false) @map("is_used")
+
+  userId String
+  user   User   @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([expirationDate])
+  @@index([isRevoked])
+  @@map("auth_tokens")
+}
+
+model Lead {
+  id String @id @default(uuid())
+
+  name        String
+  description String?
+  email       String
+  phone       String?
+  company     String?
+  status      Status  @default(NEW)
+  isActive    Boolean @default(true) @map("is_active")
+
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  pipelines Pipeline[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([email, organizationId])
+  @@index([organizationId])
+  @@index([status])
+  @@index([isActive])
+  @@map("leads")
+}
+
+model Contact {
+  id String @id @default(uuid())
+
+  name     String
+  email    String
+  phone    String?
+  company  String?
+  status   Status  @default(NEW)
+  isActive Boolean @default(true) @map("is_active")
+
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  pipelines Pipeline[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([email, organizationId])
+  @@index([organizationId])
+  @@index([status])
+  @@index([isActive])
+  @@map("contacts")
+}
+
+model Pipeline {
+  id String @id @default(uuid())
+
+  title       String
+  description String?
+  status      Status   @default(NEW)
+  priority    Priority @default(LOW)
+  isActive    Boolean  @default(true) @map("is_active")
+
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  assignedUserId String? @map("assigned_user_id")
+  assignedUser   User?   @relation("AssignedUser", fields: [assignedUserId], references: [id])
+
+  leadId String? @map("lead_id")
+  lead   Lead?   @relation(fields: [leadId], references: [id])
+
+  contactId String?  @map("contact_id")
+  contact   Contact? @relation(fields: [contactId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([organizationId])
+  @@index([assignedUserId])
+  @@index([status])
+  @@index([priority])
+  @@index([isActive])
+  @@map("pipelines")
+}
+
+enum Role {
+  ROOT
+  ADMIN
+  USER
+  GUEST
+
+  @@map("roles")
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+
+  @@map("priority")
+}
+
+enum Status {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL
+  WON
+  LOST
+  CANCELED
+  DISCARDED
+
+  @@map("status")
+}

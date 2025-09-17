@@ -1,0 +1,323 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type AuthResponse {
+  token: String
+  user: User
+}
+
+type AuthToken {
+  createdAt: String
+  expirationDate: String
+  id: ID
+  isRevoked: Boolean
+  token: String
+  updatedAt: String
+  user: User
+}
+
+input AuthenticateInput {
+  secret: String!
+}
+
+type Contact {
+  company: String
+  createdAt: String
+  email: String
+  id: ID
+  isActive: Boolean
+  name: String
+  organization: Organization
+  phone: String
+  pipelines: [Pipeline!]
+  status: ContactStatus
+  updatedAt: String
+}
+
+enum ContactStatus {
+  CANCELED
+  CONTACTED
+  DISCARDED
+  LOST
+  NEW
+  PROPOSAL
+  QUALIFIED
+  WON
+}
+
+input ContactWhereInput {
+  company: String
+  email: String
+  id: String
+  isActive: Boolean
+  name: String
+  status: ContactStatus
+}
+
+input CreateContactInput {
+  company: String
+  email: String!
+  isActive: Boolean
+  name: String!
+  phone: String
+  status: ContactStatus
+}
+
+input CreateLeadInput {
+  company: String
+  description: String
+  email: String!
+  isActive: Boolean
+  name: String!
+  phone: String
+  status: LeadStatus
+}
+
+input CreateOrganizationInput {
+  isActive: Boolean
+  name: String!
+  slug: String!
+}
+
+input CreatePipelineInput {
+  assignedUserId: String!
+  contactId: String!
+  description: String
+  isActive: Boolean
+  leadId: String!
+  priority: PipelinePriority
+  status: PipelineStatus
+  title: String!
+}
+
+input CreateUserInput {
+  email: String!
+  isActive: Boolean
+  name: String!
+  organizationId: String
+  role: UserRole
+}
+
+type Lead {
+  company: String
+  createdAt: String
+  description: String
+  email: String
+  id: ID
+  isActive: Boolean
+  name: String
+  organization: Organization
+  phone: String
+  pipelines: [Pipeline!]
+  status: LeadStatus
+  updatedAt: String
+}
+
+enum LeadStatus {
+  CANCELED
+  CONTACTED
+  DISCARDED
+  LOST
+  NEW
+  PROPOSAL
+  QUALIFIED
+  WON
+}
+
+input LeadWhereInput {
+  company: String
+  email: String
+  id: String
+  isActive: Boolean
+  name: String
+  status: LeadStatus
+}
+
+input LoginInput {
+  email: String!
+}
+
+type Mutation {
+  authenticate(data: AuthenticateInput!): AuthResponse
+  contactCreate(data: CreateContactInput!): Contact
+  contactDelete(id: ID!): Contact
+  contactUpdate(data: UpdateContactInput!, id: ID!): Contact
+  leadCreate(data: CreateLeadInput!): Lead
+  leadDelete(id: ID!): Lead
+  leadUpdate(data: UpdateLeadInput!, id: ID!): Lead
+  login(data: LoginInput!): Boolean
+  logout(data: RefreshTokenInput!): Boolean
+  organizationCreate(data: CreateOrganizationInput!): Organization
+  organizationDelete(id: ID!): Organization
+  organizationUpdate(data: UpdateOrganizationInput!, id: ID!): Organization
+  pipelineCreate(data: CreatePipelineInput!): Pipeline
+  pipelineDelete(id: ID!): Pipeline
+  pipelineUpdate(data: UpdatePipelineInput!, id: ID!): Pipeline
+  refreshToken(data: RefreshTokenInput!): AuthResponse
+  register(data: RegisterInput!): AuthResponse
+  userCreate(data: CreateUserInput!): User
+  userDelete(id: ID!): User
+  userUpdate(data: UpdateUserInput!, id: ID!): User
+}
+
+type Organization {
+  contacts: [Contact!]
+  createdAt: String
+  id: ID
+  isActive: Boolean
+  leads: [Lead!]
+  name: String
+  pipelines: [Pipeline!]
+  slug: String
+  updatedAt: String
+  users: [User!]
+}
+
+input OrganizationWhereInput {
+  id: String
+  isActive: Boolean
+  name: String
+  slug: String
+}
+
+type Pipeline {
+  assignedUser: User
+  contact: Contact
+  createdAt: String
+  description: String
+  id: ID
+  isActive: Boolean
+  lead: Lead
+  organization: Organization
+  priority: PipelinePriority
+  status: PipelineStatus
+  title: String
+  updatedAt: String
+}
+
+enum PipelinePriority {
+  HIGH
+  LOW
+  MEDIUM
+  URGENT
+}
+
+enum PipelineStatus {
+  CANCELED
+  CONTACTED
+  DISCARDED
+  LOST
+  NEW
+  PROPOSAL
+  QUALIFIED
+  WON
+}
+
+input PipelineWhereInput {
+  assignedUserId: String
+  contactId: String
+  id: String
+  isActive: Boolean
+  leadId: String
+  priority: PipelinePriority
+  status: PipelineStatus
+  title: String
+}
+
+type Query {
+  contact(id: ID!): Contact
+  contacts(where: ContactWhereInput): [Contact!]
+  lead(id: ID!): Lead
+  leads(where: LeadWhereInput): [Lead!]
+  organization(id: ID!): Organization
+  organizations(where: OrganizationWhereInput): [Organization!]
+  pipeline(id: ID!): Pipeline
+  pipelines(where: PipelineWhereInput): [Pipeline!]
+  user(id: ID!): User
+  users(where: UserWhereInput): [User!]
+}
+
+input RefreshTokenInput {
+  token: String!
+}
+
+input RegisterInput {
+  email: String!
+  name: String!
+  organizationId: String!
+  password: String!
+}
+
+input UpdateContactInput {
+  company: String
+  email: String
+  isActive: Boolean
+  name: String
+  phone: String
+  status: ContactStatus
+}
+
+input UpdateLeadInput {
+  company: String
+  description: String
+  email: String
+  isActive: Boolean
+  name: String
+  phone: String
+  status: LeadStatus
+}
+
+input UpdateOrganizationInput {
+  isActive: Boolean
+  name: String
+  slug: String
+}
+
+input UpdatePipelineInput {
+  assignedUserId: String
+  contactId: String
+  description: String
+  isActive: Boolean
+  leadId: String
+  priority: PipelinePriority
+  status: PipelineStatus
+  title: String
+}
+
+input UpdateUserInput {
+  email: String
+  isActive: Boolean
+  name: String
+  role: UserRole
+}
+
+type User {
+  assignedPipelines: [Pipeline!]
+  authTokens: [AuthToken!]
+  createdAt: String
+  email: String
+  id: ID
+  isActive: Boolean
+  name: String
+  organization: Organization
+  role: UserRole
+  updatedAt: String
+}
+
+enum UserRole {
+  ADMIN
+  GUEST
+  ROOT
+  USER
+}
+
+input UserWhereInput {
+  email: String
+  id: String
+  isActive: Boolean
+  name: String
+  organizationId: String
+  role: UserRole
+}

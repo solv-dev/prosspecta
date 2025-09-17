@@ -1,0 +1,8 @@
+{
+  "extends": "@prosspecta/tsconfig/library.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": ["*.ts", "*.graphql"],
+  "exclude": ["node_modules", "dist"]
+}
