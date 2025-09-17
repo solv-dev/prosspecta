@@ -1,4 +1,5 @@
 import { randomUUIDv7 } from 'bun'
+import { generate } from 'generate-password'
 import jwt from 'jsonwebtoken'
 import { authenticateEmail } from '../../common/emails/authenticate-email'
 import { env } from '../../lib/env'
@@ -84,7 +85,7 @@ builder.mutationField('login', (t) =>
       const expirationDate = new Date()
       expirationDate.setDate(expirationDate.getDate() + 7)
 
-      const gerenatedSecret = randomUUIDv7()
+      const gerenatedSecret = generate()
 
       await prisma.authToken.create({
         data: {
@@ -95,7 +96,7 @@ builder.mutationField('login', (t) =>
         },
       })
 
-      const authLink = `${process.env.FRONTEND_URL}/sign-in/${gerenatedSecret}`
+      const authLink = `${env.WEB_URL}/login/${gerenatedSecret}`
       const emailHtml = authenticateEmail(authLink)
 
       await resend.emails.send({
@@ -240,7 +241,7 @@ builder.mutationField('logout', (t) =>
       const result = await prisma.authToken.updateMany({
         where: {
           token,
-          isRevoked: false
+          isRevoked: false,
         },
         data: { isRevoked: true },
       })

@@ -13,6 +13,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^3.0.2",
     "elysia": "latest",
+    "generate-password": "^1.7.1",
     "graphql": "^16.11.0",
     "graphql-yoga": "^5.15.2",
     "jsonwebtoken": "^9.0.2",

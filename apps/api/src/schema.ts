@@ -4,6 +4,7 @@ import './modules/auth'
 import './modules/leads'
 import './modules/contacts'
 import './modules/pipelines'
+import './modules/dashboard'
 
 import { builder } from './shared/builder'
 
