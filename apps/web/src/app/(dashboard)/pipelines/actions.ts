@@ -1,9 +1,10 @@
 'use server'
 
 import type {
-  Pipeline,
   CreatePipelineInput,
   Mutation,
+  Pipeline,
+  PipelineStatus,
   Query,
   QueryPipelineArgs,
   UpdatePipelineInput,
@@ -106,6 +107,46 @@ export async function pipelineUpdate(id: string, args: UpdatePipelineInput) {
   revalidateTag('pipelines')
 
   return response.data.pipelineUpdate
+}
+
+export async function pipelineUpdateStatus(id: string, status: PipelineStatus) {
+  try {
+    const payload = {
+      query: PipelineUpdateMutation,
+      variables: {
+        id,
+        data: {
+          status,
+        },
+      },
+    }
+
+    console.log('Pipeline update payload:', JSON.stringify(payload, null, 2))
+
+    const response = await api
+      .post('graphql', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+      .json<{ data: { pipelineUpdate: Mutation['pipelineUpdate'] }; errors?: any[] }>()
+
+    if (response.errors) {
+      console.error('GraphQL errors:', response.errors)
+      throw new Error(`GraphQL errors: ${JSON.stringify(response.errors)}`)
+    }
+
+    revalidateTag('pipelines')
+
+    return response.data.pipelineUpdate
+  } catch (error) {
+    console.error('Error updating pipeline status:', error)
+    if (error instanceof Error) {
+      throw error
+    }
+    throw new Error('Failed to update pipeline status')
+  }
 }
 
 export async function pipelineDelete(id: string) {

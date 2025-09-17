@@ -1,7 +1,6 @@
 'use client'
 
 import { IconLogout, IconUser } from '@tabler/icons-react'
-import { getCookie } from 'cookies-next'
 import { redirect } from 'next/navigation'
 import { toast } from 'sonner'
 import { logout } from '@/actions/logout'

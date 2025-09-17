@@ -1,8 +1,8 @@
 import { Page, PageContent, PageHead } from '@/components/common/page'
 import { DashboardCards } from './_components/dashboard-cards'
-import { DashboardInbox } from './_components/dashboard-inbox'
+import { DashboardChart, DashboardInbox } from './_components/dashboard-inbox'
 
-export default function Home() {
+export default async function Home() {
   return (
     <Page>
       <PageContent>
@@ -12,9 +12,7 @@ export default function Home() {
         />
         <div className="flex flex-col w-full gap-4 h-full">
           <DashboardCards />
-          <div className="grid gap-4 w-full">
-            <DashboardInbox />
-          </div>
+          <DashboardChart />
         </div>
       </PageContent>
     </Page>

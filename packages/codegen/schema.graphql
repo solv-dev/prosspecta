@@ -100,6 +100,17 @@ input CreateUserInput {
   role: UserRole
 }
 
+type DashboardMetrics {
+  """Leads em processo (Contacted, Qualified, Proposal)"""
+  leadsInProcess: Int
+  """Porcentagem de crescimento mensal"""
+  monthlyGrowthPercentage: Float
+  """Novos leads este mês"""
+  newLeadsThisMonth: Int
+  """Número total de leads"""
+  totalLeads: Int
+}
+
 type Lead {
   company: String
   createdAt: String
@@ -229,6 +240,7 @@ input PipelineWhereInput {
 type Query {
   contact(id: ID!): Contact
   contacts(where: ContactWhereInput): [Contact!]
+  dashboardMetrics: DashboardMetrics
   lead(id: ID!): Lead
   leads(where: LeadWhereInput): [Lead!]
   organization(id: ID!): Organization

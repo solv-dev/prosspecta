@@ -3,7 +3,6 @@ import {
   IconArrowsSort,
   IconArrowUp,
   IconChevronDown,
-  IconChevronsUp,
   IconChevronUp,
 } from '@tabler/icons-react'
 import type {

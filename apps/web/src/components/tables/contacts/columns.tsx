@@ -18,7 +18,7 @@ export const columns: ColumnDef<Contact>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Name" className="ml-3" />
+      <TableColumnHeader column={column} title="Nome" className="ml-3" />
     ),
     cell: ({ row }) => {
       const { setParams } = useContactsParams()
@@ -45,12 +45,12 @@ export const columns: ColumnDef<Contact>[] = [
         {row.original.phone ? formatPhoneNumber(row.original.phone) : '-'}
       </span>
     ),
-    header: ({ column }) => <TableColumnHeader column={column} title="Phone" />,
+    header: ({ column }) => <TableColumnHeader column={column} title="Telefone" />,
   },
   {
     accessorKey: 'company',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Company" />
+      <TableColumnHeader column={column} title="Empresa" />
     ),
   },
   {
@@ -63,7 +63,7 @@ export const columns: ColumnDef<Contact>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Created At" />
+      <TableColumnHeader column={column} title="Criado em" />
     ),
   },
   {

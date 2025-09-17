@@ -14,7 +14,7 @@ export function PipelineCreateDialog() {
 
   return (
     <Dialog open={!!createPipeline} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Criar Pipeline</DialogTitle>
         </DialogHeader>

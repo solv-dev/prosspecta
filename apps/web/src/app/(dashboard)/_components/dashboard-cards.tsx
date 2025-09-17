@@ -8,8 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { fetchDashboardMetrics } from '../actions'
 
-export function DashboardCards() {
+export async function DashboardCards() {
+  const metrics = await fetchDashboardMetrics()
+
   return (
     <div className="grid grid-cols-4 w-full gap-4">
       <Card className="bg-primary px-1">
@@ -18,12 +21,16 @@ export function DashboardCards() {
             Total de Leads
           </CardDescription>
           <CardTitle className="text-5xl font-bold text-background -mb-2 mt-2 select-none">
-            100
+            {metrics?.totalLeads}
           </CardTitle>
           <CardAction>
             <Badge className="text-primary bg-background font-semibold select-none">
               <IconTrendingUp className="size-3" />
-              12
+              {metrics?.monthlyGrowthPercentage &&
+              metrics.monthlyGrowthPercentage > 0
+                ? '+'
+                : ''}
+              {metrics?.monthlyGrowthPercentage}%
             </Badge>
           </CardAction>
         </CardHeader>
@@ -40,24 +47,28 @@ export function DashboardCards() {
       <Card className="border-none bg-black/50 px-1">
         <CardHeader>
           <CardDescription className="text-sm font-medium select-none">
-            Novos Leads
+            Novos Leads (Mês)
           </CardDescription>
           <CardTitle className="text-5xl font-bold -mb-2 mt-2 select-none">
-            10
+            {metrics?.newLeadsThisMonth}
           </CardTitle>
           <CardAction>
             <Badge className="select-none bg-primary/15 text-primary">
               <IconTrendingUp className="size-3" />
-              12
+              {metrics?.monthlyGrowthPercentage &&
+              metrics.monthlyGrowthPercentage > 0
+                ? '+'
+                : ''}
+              {metrics?.monthlyGrowthPercentage ?? 0}%
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start text-sm">
           <div className="text-xs flex gap-2 font-medium select-none">
-            Leads com status novo
+            Novos leads neste mês
           </div>
           <div className="text-xs text-white/50 font-medium select-none">
-            Leads aguardando primeira análise
+            Leads criados no mês atual
           </div>
         </CardFooter>
       </Card>
@@ -65,24 +76,28 @@ export function DashboardCards() {
       <Card className="border-none bg-black/50 px-1">
         <CardHeader>
           <CardDescription className="text-sm font-medium select-none">
-            Leads Ativos
+            Leads em Processo
           </CardDescription>
           <CardTitle className="text-5xl font-bold -mb-2 mt-2 select-none">
-            19
+            {metrics?.leadsInProcess}
           </CardTitle>
           <CardAction>
             <Badge className="select-none bg-primary/15 text-primary">
               <IconTrendingUp className="size-3" />
-              12
+              {metrics?.monthlyGrowthPercentage &&
+              metrics.monthlyGrowthPercentage > 0
+                ? '+'
+                : ''}
+              {metrics?.monthlyGrowthPercentage ?? 0}%
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start text-sm">
           <div className="text-xs flex gap-2 font-medium select-none">
-            Leads em andamento
+            Leads em processo
           </div>
           <div className="text-xs text-white/50 font-medium select-none">
-            Leads sendo trabalhados ativamente
+            Contacted, Qualified ou Proposal
           </div>
         </CardFooter>
       </Card>
@@ -93,12 +108,20 @@ export function DashboardCards() {
             Taxa de Crescimento
           </CardDescription>
           <CardTitle className="text-5xl font-bold -mb-2 mt-2 select-none">
-            +100.0%
+            {metrics?.monthlyGrowthPercentage &&
+            metrics.monthlyGrowthPercentage > 0
+              ? '+'
+              : ''}
+            {metrics?.monthlyGrowthPercentage ?? 0}%
           </CardTitle>
           <CardAction>
             <Badge className="select-none bg-primary/15 text-primary">
               <IconTrendingUp className="size-3" />
-              12
+              {metrics?.monthlyGrowthPercentage &&
+              metrics.monthlyGrowthPercentage > 0
+                ? '+'
+                : ''}
+              {metrics?.monthlyGrowthPercentage ?? 0}%
             </Badge>
           </CardAction>
         </CardHeader>

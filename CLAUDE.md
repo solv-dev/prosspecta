@@ -46,6 +46,23 @@ The system uses **GraphQL** for API communication between the frontend and backe
 - **HTTP Client**: ky
 - **Authentication**: JWT with bcrypt
 
+## API Modules
+
+The API is organized into modules in `apps/api/src/modules/`:
+- **auth** - Authentication (login, registration, JWT tokens)
+- **users** - User management and profiles
+- **organizations** - Organization/tenant management
+- **leads** - Lead management and tracking
+- **contacts** - Contact management
+- **pipelines** - Pipeline/workflow management
+- **dashboard** - Dashboard metrics and analytics
+
+### Adding New Modules
+1. Create folder in `apps/api/src/modules/[module-name]/`
+2. Add `index.ts`, `[module].types.ts`, `[module].resolvers.ts`
+3. Import module in `apps/api/src/schema.ts`
+4. Run codegen to generate frontend types
+
 ## Development Workflow
 
 1. Start the API server first: `cd apps/api && bun dev`
@@ -53,3 +70,86 @@ The system uses **GraphQL** for API communication between the frontend and backe
 3. Start the web app: `cd apps/web && bun dev`
 
 The codegen step is required when GraphQL schema changes to keep frontend types in sync.
+
+## Dashboard Analytics
+
+The dashboard module provides key metrics:
+- **Total Leads**: Count of all active leads in organization
+- **New Leads (Monthly)**: Leads created in current month
+- **Leads in Process**: Leads with status CONTACTED, QUALIFIED, or PROPOSAL
+- **Monthly Growth**: Percentage growth comparing current vs previous month
+
+Query: `dashboardMetrics` returns `DashboardMetrics` type with authentication required.
+
+## User Interface & Localization
+
+### Internationalization
+The application interface is primarily in **Portuguese (pt-BR)**:
+- All table headers, labels, and user-facing text translated to Portuguese
+- Status values displayed in Portuguese (e.g., "Novo", "Contatado", "Qualificado")
+- Priority levels translated (e.g., "Baixa", "Média", "Alta", "Urgente")
+
+### Data Tables
+Generic data table component located at `apps/web/src/components/common/data-table.tsx`:
+- Fully translated to Portuguese
+- Reusable across different modules
+- Supports pagination, sorting, filtering
+- Includes drag-and-drop functionality
+
+Module-specific tables in `apps/web/src/components/tables/`:
+- **Contacts Table**: Nome, Email, Telefone, Empresa, Criado em
+- **Leads Table**: Nome, Email, Telefone, Empresa, Descrição, Criado em
+- **Pipelines Table**: Título, Descrição, Status, Prioridade, Usuário Atribuído, Contato, Lead, Criado em
+
+### Pipelines Management
+
+#### Status Values (GraphQL Enum)
+```
+NEW → "Novo"
+CONTACTED → "Contatado"
+QUALIFIED → "Qualificado"
+PROPOSAL → "Proposta"
+WON → "Ganho"
+LOST → "Perdido"
+CANCELED → "Cancelado"
+DISCARDED → "Descartado"
+```
+
+#### Priority Values (GraphQL Enum)
+```
+LOW → "Baixa"
+MEDIUM → "Média"
+HIGH → "Alta"
+URGENT → "Urgente"
+```
+
+#### View Modes
+Pipelines can be viewed in two modes via URL parameter hook `usePipelineViewParams`:
+- **Kanban View** (default): `?view=kanban` - Drag-and-drop cards by status
+- **Table View**: `?view=table` - Traditional tabular format
+
+Component: `apps/web/src/app/(dashboard)/pipelines/_components/pipelines-data-views.tsx`
+
+#### Analytics & Charts
+Pipeline analytics chart shows active vs completed pipelines over time:
+- **Active**: NEW, CONTACTED, QUALIFIED, PROPOSAL status
+- **Completed**: WON, LOST status
+- Data grouped by month of creation
+- Located in dashboard at `DashboardChart` component
+- Uses `fetchPipelineAnalytics()` action for data processing
+
+## Important File Locations
+
+### Core Components
+- Generic data table: `apps/web/src/components/common/data-table.tsx`
+- Pipeline status options: `apps/web/src/utils/pipeline-status-options.ts`
+- Pipeline view hook: `apps/web/src/hooks/use-pipeline-view-params.ts`
+
+### Actions & Queries
+- Dashboard actions: `apps/web/src/app/(dashboard)/actions.ts`
+- Pipeline actions: `apps/web/src/app/(dashboard)/pipelines/actions.ts`
+- GraphQL queries: `apps/web/src/graphql/queries.ts`
+- GraphQL mutations: `apps/web/src/graphql/mutations.ts`
+
+### Translation Utilities
+Status and priority translations are handled in table column definitions with mapping objects for consistent Portuguese display throughout the application.

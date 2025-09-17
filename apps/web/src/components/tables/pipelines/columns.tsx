@@ -14,11 +14,29 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { usePipelinesParams } from '@/hooks/use-pipelines-params'
 
+const statusTranslations: Record<string, string> = {
+  NEW: 'Novo',
+  CONTACTED: 'Contatado',
+  QUALIFIED: 'Qualificado',
+  PROPOSAL: 'Proposta',
+  WON: 'Ganho',
+  LOST: 'Perdido',
+  CANCELED: 'Cancelado',
+  DISCARDED: 'Descartado',
+}
+
+const priorityTranslations: Record<string, string> = {
+  LOW: 'Baixa',
+  MEDIUM: 'Média',
+  HIGH: 'Alta',
+  URGENT: 'Urgente',
+}
+
 export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Title" className="ml-3" />
+      <TableColumnHeader column={column} title="Título" className="ml-3" />
     ),
     cell: ({ row }) => {
       const { setParams } = usePipelinesParams()
@@ -35,27 +53,20 @@ export const columns: ColumnDef<Pipeline>[] = [
     },
   },
   {
-    accessorKey: 'description',
-    header: ({ column }) => (
-      <TableColumnHeader column={column} title="Description" />
-    ),
-    cell: ({ row }) => (
-      <span className="max-w-[200px] truncate">
-        {row.original.description || '-'}
-      </span>
-    ),
-  },
-  {
     accessorKey: 'status',
     header: ({ column }) => (
       <TableColumnHeader column={column} title="Status" />
     ),
-    cell: ({ row }) => <Badge variant="outline">{row.original.status}</Badge>,
+    cell: ({ row }) => (
+      <Badge variant="outline">
+        {statusTranslations[row.original.status || ''] || row.original.status}
+      </Badge>
+    ),
   },
   {
     accessorKey: 'priority',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Priority" />
+      <TableColumnHeader column={column} title="Prioridade" />
     ),
     cell: ({ row }) => (
       <Badge
@@ -66,21 +77,22 @@ export const columns: ColumnDef<Pipeline>[] = [
             : 'secondary'
         }
       >
-        {row.original.priority}
+        {priorityTranslations[row.original.priority || ''] ||
+          row.original.priority}
       </Badge>
     ),
   },
   {
     accessorKey: 'assignedUser',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Assigned User" />
+      <TableColumnHeader column={column} title="Usuário Atribuído" />
     ),
     cell: ({ row }) => <span>{row.original.assignedUser?.name || '-'}</span>,
   },
   {
     accessorKey: 'contact',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Contact" />
+      <TableColumnHeader column={column} title="Contato" />
     ),
     cell: ({ row }) => <span>{row.original.contact?.name || '-'}</span>,
   },
@@ -99,7 +111,7 @@ export const columns: ColumnDef<Pipeline>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Created At" />
+      <TableColumnHeader column={column} title="Criado em" />
     ),
   },
   {

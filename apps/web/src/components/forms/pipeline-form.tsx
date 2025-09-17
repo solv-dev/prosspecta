@@ -152,7 +152,18 @@ export function PipelineForm({
           label="Título"
           placeholder="Título da pipeline"
         />
-
+        <FormSelect
+          name="assignedUserId"
+          control={form.control}
+          label="Responsável"
+          placeholder="Selecione o usuário"
+          items={
+            users?.map((user) => ({
+              value: user.id ?? '',
+              label: user.name ?? '',
+            })) ?? []
+          }
+        />
         <div className="grid grid-cols-2 gap-4">
           <FormSelect
             name="status"
@@ -170,24 +181,12 @@ export function PipelineForm({
           />
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          <FormSelect
-            name="assignedUserId"
-            control={form.control}
-            label="Responsável"
-            placeholder="Selecione o usuário relacionado"
-            items={
-              users?.map((user) => ({
-                value: user.id ?? '',
-                label: user.name ?? '',
-              })) ?? []
-            }
-          />
+        <div className="grid grid-cols-2 gap-4">
           <FormSelect
             name="leadId"
             control={form.control}
             label="Lead"
-            placeholder="Selecione o lead relacionado"
+            placeholder="Selecione o lead"
             items={
               leads?.map((lead) => ({
                 value: lead.id ?? '',
@@ -199,7 +198,7 @@ export function PipelineForm({
             name="contactId"
             control={form.control}
             label="Contato"
-            placeholder="Selecione o contato relacionado"
+            placeholder="Selecione o contato"
             items={
               contacts?.map((contact) => ({
                 value: contact.id ?? '',

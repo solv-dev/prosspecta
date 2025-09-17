@@ -3,8 +3,8 @@ import { Loader } from '@/components/common/loader'
 import { PipelineCreateDialog } from '@/components/dialogs/pipeline-create-dialog'
 import { PipelineDeleteDialog } from '@/components/dialogs/pipeline-delete-dialog'
 import { PipelineUpdateDialog } from '@/components/dialogs/pipeline-update-dialog'
-import { PipelinesTable } from '@/components/tables/pipelines/table'
 import { Label } from '@/components/ui/label'
+import { PipelinesDataViews } from './_components/pipelines-data-views'
 import { PipelinesPageActions } from './_components/pipelines-page-actions'
 import { fetchPipelines } from './actions'
 
@@ -24,7 +24,7 @@ export default async function PipelinesPage() {
           <PipelinesPageActions />
         </div>
         <Suspense fallback={<Loader />}>
-          <PipelinesTable data={pipelines ?? []} />
+          <PipelinesDataViews data={pipelines ?? []} />
         </Suspense>
       </div>
 

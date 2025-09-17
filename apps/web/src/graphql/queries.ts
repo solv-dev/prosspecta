@@ -269,3 +269,14 @@ export const UsersQuery = `
     }
   }
 `
+
+export const DashboardMetricsQuery = `
+  query DashboardMetrics {
+    dashboardMetrics {
+      totalLeads
+      newLeadsThisMonth
+      leadsInProcess
+      monthlyGrowthPercentage
+    }
+  }
+`

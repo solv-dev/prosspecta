@@ -18,7 +18,7 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Name" className="ml-3" />
+      <TableColumnHeader column={column} title="Nome" className="ml-3" />
     ),
     cell: ({ row }) => {
       const { setParams } = useLeadsParams()
@@ -45,18 +45,20 @@ export const columns: ColumnDef<Lead>[] = [
         {row.original.phone ? formatPhoneNumber(row.original.phone) : '-'}
       </span>
     ),
-    header: ({ column }) => <TableColumnHeader column={column} title="Phone" />,
+    header: ({ column }) => (
+      <TableColumnHeader column={column} title="Telefone" />
+    ),
   },
   {
     accessorKey: 'company',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Company" />
+      <TableColumnHeader column={column} title="Empresa" />
     ),
   },
   {
     accessorKey: 'description',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Description" />
+      <TableColumnHeader column={column} title="Descrição" />
     ),
     cell: ({ row }) => (
       <span className="max-w-[200px] truncate">
@@ -74,7 +76,7 @@ export const columns: ColumnDef<Lead>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Created At" />
+      <TableColumnHeader column={column} title="Criado em" />
     ),
   },
   {

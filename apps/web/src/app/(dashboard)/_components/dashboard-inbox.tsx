@@ -1,16 +1,21 @@
-import { Card, CardContent } from '@/components/ui/card'
+import { ChartAreaLegend } from '@/components/ui/area-chart'
 import { Label } from '@/components/ui/label'
+import { fetchPipelineAnalytics } from '../actions'
 
-export function DashboardInbox() {
+export async function DashboardChart() {
+  const pipelineData = await fetchPipelineAnalytics()
+
   return (
-    <Card className="border-none bg-black/50 px-1">
-      <CardContent>
-        <div className="flex flex-col w-full h-[22rem] items-center justify-center">
-          <Label className="text-xs text-muted-foreground font-light">
-            Nenhum lead recente
+    <div className="grid w-full h-full bg-black/40 overflow-hidden rounded-lg p-6">
+      <div className="flex flex-col gap-4">
+        <div>
+          <Label className="text-lg font-semibold">Pipelines por Período</Label>
+          <Label className="text-sm text-muted-foreground block">
+            Comparativo de pipelines ativas vs finalizadas
           </Label>
         </div>
-      </CardContent>
-    </Card>
+        <ChartAreaLegend data={pipelineData} />
+      </div>
+    </div>
   )
 }
