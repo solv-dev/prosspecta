@@ -1,4 +1,5 @@
 'use client'
+
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 import {
   type ChartConfig,
@@ -28,7 +29,7 @@ const chartConfig = {
 
 export function ChartAreaLegend({ data }: { data: PipelineChartData[] }) {
   return (
-    <ChartContainer config={chartConfig} className="h-[250px] w-full">
+    <ChartContainer config={chartConfig} className='h-[250px] w-full'>
       <AreaChart
         accessibilityLayer
         data={data}
@@ -39,34 +40,34 @@ export function ChartAreaLegend({ data }: { data: PipelineChartData[] }) {
       >
         <CartesianGrid vertical={false} />
         <XAxis
-          dataKey="month"
+          dataKey='month'
           tickLine={false}
           axisLine={false}
           tickMargin={8}
-          tickFormatter={(value) => value.split(' ')[0].slice(0, 3)}
+          tickFormatter={value => value.split(' ')[0].slice(0, 3)}
         />
         <ChartTooltip
           cursor={false}
-          content={<ChartTooltipContent indicator="line" />}
+          content={<ChartTooltipContent indicator='line' />}
         />
         <Area
-          dataKey="finalizadas"
-          type="natural"
-          fill="var(--color-finalizadas)"
+          dataKey='finalizadas'
+          type='natural'
+          fill='var(--color-finalizadas)'
           fillOpacity={0.4}
-          stroke="var(--color-finalizadas)"
-          stackId="a"
+          stroke='var(--color-finalizadas)'
+          stackId='a'
         />
         <Area
-          dataKey="ativas"
-          type="natural"
-          fill="var(--color-ativas)"
+          dataKey='ativas'
+          type='natural'
+          fill='var(--color-ativas)'
           fillOpacity={0.4}
-          stroke="var(--color-ativas)"
-          stackId="a"
+          stroke='var(--color-ativas)'
+          stackId='a'
         />
         <ChartLegend
-          content={(props) => (
+          content={props => (
             <ChartLegendContent
               payload={props.payload}
               verticalAlign={props.verticalAlign}

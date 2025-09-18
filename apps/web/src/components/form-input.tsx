@@ -41,10 +41,10 @@ export const FormInput = ({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel className="text-sm">
+            <FormLabel className='text-sm'>
               {label}
               {isRequired && (
-                <strong className="font-semibold text-red-500">*</strong>
+                <strong className='font-semibold text-red-500'>*</strong>
               )}
             </FormLabel>
           )}

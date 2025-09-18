@@ -76,10 +76,7 @@ export async function fetchPipelineAnalytics() {
 
       return acc
     },
-    {} as Record<
-      string,
-      { month: string; ativas: number; finalizadas: number }
-    >,
+    {} as Record<string, { month: string; ativas: number; finalizadas: number }>
   )
 
   return Object.values(monthlyData).slice(-6) // Últimos 6 meses

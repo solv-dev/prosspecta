@@ -23,7 +23,7 @@ function applyFilters(leads: Lead[], filters: LeadFilters): Lead[] {
     return leads
   }
 
-  return leads.filter((lead) => {
+  return leads.filter(lead => {
     // Filtro por período
     if (filters.startDate || filters.endDate) {
       if (!lead.createdAt) return false
@@ -85,57 +85,57 @@ export function LeadsPageClient({ initialLeads }: LeadsPageClientProps) {
   }, [initialLeads, filters])
 
   return (
-    <div className="flex flex-col w-full h-full gap-4">
-      <div className="grid grid-cols-2">
-        <div className="flex flex-col justify-end">
-          <Label className="text-[22px] font-semibold">Leads</Label>
-          <Label className="text-sm font-light text-muted-foreground">
+    <div className='flex flex-col w-full h-full gap-4'>
+      <div className='grid grid-cols-2'>
+        <div className='flex flex-col justify-end'>
+          <Label className='text-[22px] font-semibold'>Leads</Label>
+          <Label className='text-sm font-light text-muted-foreground'>
             Gerencie os seus leads registrados
           </Label>
         </div>
-        <div className="flex items-center justify-end gap-2">
+        <div className='flex items-center justify-end gap-2'>
           <LeadsFilterDialog
             filters={filters}
             onFiltersChange={setFilters}
             onClearFilters={clearFilters}
           />
-          <Link href="/leads/search">
-            <Button type="button" variant="outline" size="icon">
-              <IconSearch className="size-4" />
+          <Link href='/leads/search'>
+            <Button type='button' variant='outline' size='icon'>
+              <IconSearch className='size-4' />
             </Button>
           </Link>
-          <Button type="button" variant="outline" size="icon">
-            <IconTableExport className="size-4" />
+          <Button type='button' variant='outline' size='icon'>
+            <IconTableExport className='size-4' />
           </Button>
           <Button
-            type="button"
-            variant="outline"
-            size="icon"
+            type='button'
+            variant='outline'
+            size='icon'
             onClick={() => setParams({ createLead: true })}
           >
-            <IconUsersPlus className="size-4" />
+            <IconUsersPlus className='size-4' />
           </Button>
         </div>
       </div>
 
       {hasActiveFilters && (
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className='flex items-center gap-2 text-sm text-muted-foreground'>
           <span>
             {filteredLeads.length} lead(s) encontrado(s) com os filtros
             aplicados
           </span>
           <Button
-            variant="ghost"
-            size="sm"
+            variant='ghost'
+            size='sm'
             onClick={clearFilters}
-            className="h-auto p-1 text-primary hover:text-primary"
+            className='h-auto p-1 text-primary hover:text-primary'
           >
             Limpar filtros
           </Button>
         </div>
       )}
 
-      <div className="relative">
+      <div className='relative'>
         <LeadsTable data={filteredLeads} />
       </div>
     </div>

@@ -3,10 +3,8 @@
 import {
   IconChevronDown,
   IconColumns,
-  IconFilter,
   IconPlus,
   IconTable,
-  IconTableExport,
 } from '@tabler/icons-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -43,35 +41,35 @@ export function PipelinesPageActions() {
   ]
 
   const currentViewOption = viewOptions.find(
-    (option) => option.value === currentView,
+    option => option.value === currentView
   )
 
   return (
-    <div className="flex items-end gap-2 justify-end">
+    <div className='flex items-end gap-2 justify-end'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="flex items-center gap-2">
-            {currentViewOption && <currentViewOption.icon className="size-4" />}
+          <Button variant='outline' className='flex items-center gap-2'>
+            {currentViewOption && <currentViewOption.icon className='size-4' />}
             {currentViewOption?.label}
-            <IconChevronDown className="size-4" />
+            <IconChevronDown className='size-4' />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          {viewOptions.map((option) => (
+        <DropdownMenuContent align='end'>
+          {viewOptions.map(option => (
             <DropdownMenuItem
               key={option.value}
               onClick={() => setView(option.value)}
-              className="flex items-center gap-2"
+              className='flex items-center gap-2'
             >
-              <option.icon className="size-4" />
+              <option.icon className='size-4' />
               {option.label}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
       <Button
-        type="button"
-        variant="outline"
+        type='button'
+        variant='outline'
         onClick={() => setParams({ createPipeline: true })}
       >
         <IconPlus />

@@ -74,7 +74,7 @@ export function TableProvider<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    onSortingChange: (updater) => {
+    onSortingChange: updater => {
       // @ts-expect-error updater is a function that returns a sorting object
       const newSorting = updater(sorting)
 
@@ -123,7 +123,7 @@ export const TableHeaderGroup = ({
   children,
 }: TableHeaderGroupProps) => (
   <TableRowRaw key={headerGroup.id}>
-    {headerGroup.headers.map((header) => children({ header }))}
+    {headerGroup.headers.map(header => children({ header }))}
   </TableRowRaw>
 )
 
@@ -137,7 +137,7 @@ export const TableHeader = ({ className, children }: TableHeaderProps) => {
 
   return (
     <TableHeaderRaw className={className}>
-      {table?.getHeaderGroups().map((headerGroup) => children({ headerGroup }))}
+      {table?.getHeaderGroups().map(headerGroup => children({ headerGroup }))}
     </TableHeaderRaw>
   )
 }
@@ -170,27 +170,27 @@ export function TableColumnHeader<TData, TValue>({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
-            className="-ml-3 h-8 data-[state=open]:bg-accent"
-            size="sm"
-            variant="ghost"
+            className='-ml-3 h-8 data-[state=open]:bg-accent'
+            size='sm'
+            variant='ghost'
           >
             <span>{title}</span>
             {column.getIsSorted() === 'desc' ? (
-              <IconChevronDown className="ml-2 h-4 w-4" />
+              <IconChevronDown className='ml-2 h-4 w-4' />
             ) : column.getIsSorted() === 'asc' ? (
-              <IconChevronUp className="ml-2 h-4 w-4" />
+              <IconChevronUp className='ml-2 h-4 w-4' />
             ) : (
-              <IconArrowsSort className="ml-2 h-4 w-4" />
+              <IconArrowsSort className='ml-2 h-4 w-4' />
             )}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent align='start'>
           <DropdownMenuItem onClick={handleSortAsc}>
-            <IconArrowUp className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+            <IconArrowUp className='mr-2 h-3.5 w-3.5 text-muted-foreground/70' />
             Asc
           </DropdownMenuItem>
           <DropdownMenuItem onClick={handleSortDesc}>
-            <IconArrowDown className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+            <IconArrowDown className='mr-2 h-3.5 w-3.5 text-muted-foreground/70' />
             Desc
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -222,7 +222,7 @@ export const TableRow = ({ row, children, className }: TableRowProps) => (
     data-state={row.getIsSelected() && 'selected'}
     key={row.id}
   >
-    {row.getVisibleCells().map((cell) => children({ cell }))}
+    {row.getVisibleCells().map(cell => children({ cell }))}
   </TableRowRaw>
 )
 
@@ -238,10 +238,10 @@ export const TableBody = ({ children, className }: TableBodyProps) => {
   return (
     <TableBodyRaw className={className}>
       {rows?.length ? (
-        rows.map((row) => children({ row }))
+        rows.map(row => children({ row }))
       ) : (
         <TableRowRaw>
-          <TableCellRaw className="h-24 text-center" colSpan={columns.length}>
+          <TableCellRaw className='h-24 text-center' colSpan={columns.length}>
             Nenhum registro
           </TableCellRaw>
         </TableRowRaw>

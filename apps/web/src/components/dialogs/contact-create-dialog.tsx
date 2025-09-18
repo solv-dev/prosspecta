@@ -14,11 +14,11 @@ export function ContactCreateDialog() {
 
   return (
     <Dialog open={!!createContact} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className='sm:max-w-sm'>
         <DialogHeader>
           <DialogTitle>Criar Contato</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           <ContactForm />
         </div>
       </DialogContent>

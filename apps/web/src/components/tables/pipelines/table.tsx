@@ -14,7 +14,7 @@ import { columns } from './columns'
 
 export const PipelinesTable = ({ data }: { data: Pipeline[] }) => {
   return (
-    <div className="grid w-full h-full bg-black/40 overflow-hidden rounded-lg">
+    <div className='grid w-full h-full bg-black/40 overflow-hidden rounded-lg'>
       <TableProvider columns={columns} data={data ?? []}>
         <TableHeader>
           {({ headerGroup }) => (

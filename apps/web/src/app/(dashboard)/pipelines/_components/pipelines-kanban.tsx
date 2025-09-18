@@ -50,13 +50,13 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
     setIsClient(true)
   }, [])
 
-  const columns = pipelineStatusOptions.map((status) => ({
+  const columns = pipelineStatusOptions.map(status => ({
     id: status.value,
     name: status.label,
     color: statusColors[status.value] || '#6B7280',
   }))
 
-  const pipelinesData: PipelineKanbanItem[] = pipelines.map((pipeline) => {
+  const pipelinesData: PipelineKanbanItem[] = pipelines.map(pipeline => {
     const assignedUser = pipeline.assignedUser
 
     return {
@@ -70,7 +70,7 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
   })
 
   if (originalDataRef.current.length === 0) {
-    originalDataRef.current = pipelinesData.map((pipeline) => ({
+    originalDataRef.current = pipelinesData.map(pipeline => ({
       id: pipeline.id,
       column: pipeline.column,
     }))
@@ -78,36 +78,36 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
 
   if (!isClient) {
     return (
-      <div className="grid grid-cols-6 gap-4 h-full">
-        {columns.map((column) => (
-          <div key={column.id} className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 mb-4">
+      <div className='grid grid-cols-6 gap-4 h-full'>
+        {columns.map(column => (
+          <div key={column.id} className='flex flex-col gap-2'>
+            <div className='flex items-center gap-2 mb-4'>
               <div
-                className="h-2 w-2 rounded-full"
+                className='h-2 w-2 rounded-full'
                 style={{ backgroundColor: column.color }}
               />
               <span>{column.name}</span>
             </div>
-            <div className="space-y-2">
+            <div className='space-y-2'>
               {pipelinesData
-                .filter((pipeline) => pipeline.column === column.id)
-                .map((pipeline) => (
+                .filter(pipeline => pipeline.column === column.id)
+                .map(pipeline => (
                   <div
                     key={pipeline.id}
-                    className="bg-white border rounded-md p-3 shadow-sm"
+                    className='bg-white border rounded-md p-3 shadow-sm'
                   >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex flex-col gap-1">
-                        <p className="m-0 flex-1 -mb-1 text-muted-foreground text-xs font-mono">
+                    <div className='flex items-start justify-between gap-2'>
+                      <div className='flex flex-col gap-1'>
+                        <p className='m-0 flex-1 -mb-1 text-muted-foreground text-xs font-mono'>
                           #{pipeline.id.slice(0, 6).toLocaleUpperCase()}
                         </p>
-                        <p className="m-0 flex-1 font-medium text-[13px]">
+                        <p className='m-0 flex-1 font-medium text-[13px]'>
                           {pipeline.name}
                         </p>
-                        <p className="m-0 -mt-1 flex-1 text-muted-foreground text-xs">
+                        <p className='m-0 -mt-1 flex-1 text-muted-foreground text-xs'>
                           {pipeline.assignedTo}
                         </p>
-                        <div className="flex items-center gap-2">
+                        <div className='flex items-center gap-2'>
                           <Badge
                             style={{
                               backgroundColor: `${priorityColors[pipeline.priority] || '#6B7280'}20`,
@@ -141,15 +141,15 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
 
   const handleUpdateStatus = async (
     values: typeof pipelinesData,
-    isDragEnd?: boolean,
+    isDragEnd?: boolean
   ) => {
     if (!isDragEnd) return
 
     const changedPipelines: { id: string; column: string }[] = []
 
-    values.forEach((newData) => {
+    values.forEach(newData => {
       const originalTask = originalDataRef.current.find(
-        (task) => task.id === newData.id,
+        task => task.id === newData.id
       )
       if (originalTask && originalTask.column !== newData.column) {
         changedPipelines.push({ id: newData.id, column: newData.column })
@@ -179,7 +179,7 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
         .then(() => {
           console.log('Status da pipeline alterado com sucesso!')
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error)
           toast.error('Erro ao alterar o status da pipeline!')
         })
@@ -192,37 +192,37 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
       data={pipelinesData}
       onDataChange={handleUpdateStatus}
     >
-      {(column) => (
+      {column => (
         <KanbanBoard id={column.id} key={column.id}>
           <KanbanHeader>
-            <div className="flex items-center gap-2">
+            <div className='flex items-center gap-2'>
               <div
-                className="h-2 w-2 rounded-full"
+                className='h-2 w-2 rounded-full'
                 style={{ backgroundColor: column.color }}
               />
               <span>{column.name}</span>
             </div>
           </KanbanHeader>
           <KanbanCards id={column.id}>
-            {(task) => (
+            {task => (
               <KanbanCard
                 column={task.column}
                 id={task.id}
                 key={task.id}
                 name={task.name}
               >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex flex-col gap-1">
-                    <p className="m-0 flex-1 -mb-1 text-muted-foreground text-xs font-mono">
+                <div className='flex items-start justify-between gap-2'>
+                  <div className='flex flex-col gap-1'>
+                    <p className='m-0 flex-1 -mb-1 text-muted-foreground text-xs font-mono'>
                       #{task.id.slice(0, 6).toLocaleUpperCase()}
                     </p>
-                    <p className="m-0 flex-1 font-medium text-[13px]">
+                    <p className='m-0 flex-1 font-medium text-[13px]'>
                       {task.name}
                     </p>
-                    <p className="m-0 -mt-1 flex-1 text-muted-foreground  text-xs">
+                    <p className='m-0 -mt-1 flex-1 text-muted-foreground  text-xs'>
                       {task.assignedTo}
                     </p>
-                    <div className="flex items-center gap-2">
+                    <div className='flex items-center gap-2'>
                       <Badge
                         style={{
                           backgroundColor: `${priorityColors[task.priority as string] || '#6B7280'}20`,

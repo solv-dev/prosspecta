@@ -36,15 +36,15 @@ export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'title',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Título" className="ml-3" />
+      <TableColumnHeader column={column} title='Título' className='ml-3' />
     ),
     cell: ({ row }) => {
       const { setParams } = usePipelinesParams()
 
       return (
         <button
-          type="button"
-          className="-mb-3 ml-2 cursor-pointer"
+          type='button'
+          className='-mb-3 ml-2 cursor-pointer'
           onClick={() => setParams({ updatePipeline: row.original.id })}
         >
           {row.original.title}
@@ -55,10 +55,10 @@ export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'status',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Status" />
+      <TableColumnHeader column={column} title='Status' />
     ),
     cell: ({ row }) => (
-      <Badge variant="outline">
+      <Badge variant='outline'>
         {statusTranslations[row.original.status || ''] || row.original.status}
       </Badge>
     ),
@@ -66,7 +66,7 @@ export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'priority',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Prioridade" />
+      <TableColumnHeader column={column} title='Prioridade' />
     ),
     cell: ({ row }) => (
       <Badge
@@ -85,20 +85,20 @@ export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'assignedUser',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Usuário Atribuído" />
+      <TableColumnHeader column={column} title='Usuário Atribuído' />
     ),
     cell: ({ row }) => <span>{row.original.assignedUser?.name || '-'}</span>,
   },
   {
     accessorKey: 'contact',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Contato" />
+      <TableColumnHeader column={column} title='Contato' />
     ),
     cell: ({ row }) => <span>{row.original.contact?.name || '-'}</span>,
   },
   {
     accessorKey: 'lead',
-    header: ({ column }) => <TableColumnHeader column={column} title="Lead" />,
+    header: ({ column }) => <TableColumnHeader column={column} title='Lead' />,
     cell: ({ row }) => <span>{row.original.lead?.name || '-'}</span>,
   },
   {
@@ -111,7 +111,7 @@ export const columns: ColumnDef<Pipeline>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Criado em" />
+      <TableColumnHeader column={column} title='Criado em' />
     ),
   },
   {
@@ -121,13 +121,13 @@ export const columns: ColumnDef<Pipeline>[] = [
       const { setParams } = usePipelinesParams()
 
       return (
-        <div className="flex items-center justify-end">
+        <div className='flex items-center justify-end'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                type="button"
+                type='button'
                 onClick={() => console.log(row.original.id)}
-                className="bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer"
+                className='bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer'
               >
                 <IconDotsVertical />
               </button>
@@ -142,7 +142,7 @@ export const columns: ColumnDef<Pipeline>[] = [
               <DropdownMenuItem
                 onClick={() => setParams({ deletePipeline: row.original.id })}
               >
-                <IconTrash className="h-4 w-4" />
+                <IconTrash className='h-4 w-4' />
                 Deletar
               </DropdownMenuItem>
             </DropdownMenuContent>

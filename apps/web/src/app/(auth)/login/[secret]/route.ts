@@ -3,7 +3,7 @@ import { AuthenticateMutation } from '@/graphql/mutations'
 
 export async function GET(
   _req: NextRequest,
-  ctx: RouteContext<'/login/[secret]'>,
+  ctx: RouteContext<'/login/[secret]'>
 ) {
   const params = await ctx.params
   const { secret } = params
@@ -26,11 +26,11 @@ export async function GET(
       console.error(
         'GraphQL request failed:',
         authenticate.status,
-        authenticate.statusText,
+        authenticate.statusText
       )
       return NextResponse.json(
         { error: 'Authentication request failed' },
-        { status: 500 },
+        { status: 500 }
       )
     }
 
@@ -43,7 +43,7 @@ export async function GET(
       console.error('No token in response:', data)
       return NextResponse.json(
         { error: 'Authentication failed' },
-        { status: 401 },
+        { status: 401 }
       )
     }
 
@@ -60,7 +60,7 @@ export async function GET(
     console.error('Error in authentication route:', err)
     return NextResponse.json(
       { error: 'Failed to process authentication' },
-      { status: 500 },
+      { status: 500 }
     )
   }
 }

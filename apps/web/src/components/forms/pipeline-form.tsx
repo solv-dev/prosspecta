@@ -104,7 +104,7 @@ export function PipelineForm({
     if (isUpdate && data?.id) {
       pipelineUpdate(data?.id, values)
         .then(() => toast.success('Pipeline atualizado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao atualizar pipeline.')
           console.error(error)
         })
@@ -114,7 +114,7 @@ export function PipelineForm({
     } else {
       pipelineCreate(values)
         .then(() => toast.success('Pipeline criado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao criar pipeline.')
           console.error(error)
         })
@@ -144,63 +144,63 @@ export function PipelineForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
         <FormInput
-          name="title"
-          type="text"
+          name='title'
+          type='text'
           control={form.control}
-          label="Título"
-          placeholder="Título da pipeline"
+          label='Título'
+          placeholder='Título da pipeline'
         />
         <FormSelect
-          name="assignedUserId"
+          name='assignedUserId'
           control={form.control}
-          label="Responsável"
-          placeholder="Selecione o usuário"
+          label='Responsável'
+          placeholder='Selecione o usuário'
           items={
-            users?.map((user) => ({
+            users?.map(user => ({
               value: user.id ?? '',
               label: user.name ?? '',
             })) ?? []
           }
         />
-        <div className="grid grid-cols-2 gap-4">
+        <div className='grid grid-cols-2 gap-4'>
           <FormSelect
-            name="status"
+            name='status'
             control={form.control}
-            label="Status"
-            placeholder="Selecione o status"
+            label='Status'
+            placeholder='Selecione o status'
             items={statusOptions}
           />
           <FormSelect
-            name="priority"
+            name='priority'
             control={form.control}
-            label="Prioridade"
-            placeholder="Selecione a prioridade"
+            label='Prioridade'
+            placeholder='Selecione a prioridade'
             items={priorityOptions}
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className='grid grid-cols-2 gap-4'>
           <FormSelect
-            name="leadId"
+            name='leadId'
             control={form.control}
-            label="Lead"
-            placeholder="Selecione o lead"
+            label='Lead'
+            placeholder='Selecione o lead'
             items={
-              leads?.map((lead) => ({
+              leads?.map(lead => ({
                 value: lead.id ?? '',
                 label: lead.name ?? '',
               })) ?? []
             }
           />
           <FormSelect
-            name="contactId"
+            name='contactId'
             control={form.control}
-            label="Contato"
-            placeholder="Selecione o contato"
+            label='Contato'
+            placeholder='Selecione o contato'
             items={
-              contacts?.map((contact) => ({
+              contacts?.map(contact => ({
                 value: contact.id ?? '',
                 label: contact.name ?? '',
               })) ?? []
@@ -210,13 +210,13 @@ export function PipelineForm({
 
         <FormInput
           isTextarea
-          name="description"
-          type="text"
+          name='description'
+          type='text'
           control={form.control}
-          label="Descrição"
-          placeholder="Descreva a pipeline..."
+          label='Descrição'
+          placeholder='Descreva a pipeline...'
         />
-        <Button className="w-full">{isUpdate ? 'Atualizar' : 'Criar'}</Button>
+        <Button className='w-full'>{isUpdate ? 'Atualizar' : 'Criar'}</Button>
       </form>
     </Form>
   )

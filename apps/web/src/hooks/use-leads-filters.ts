@@ -45,7 +45,7 @@ export function useLeadsFilters() {
 
       router.push(`?${params.toString()}`)
     },
-    [router, searchParams],
+    [router, searchParams]
   )
 
   const clearFilters = useCallback(() => {
@@ -64,7 +64,7 @@ export function useLeadsFilters() {
     filters.startDate ||
       filters.endDate ||
       filters.areaCode ||
-      filters.emailDomain,
+      filters.emailDomain
   )
 
   return {

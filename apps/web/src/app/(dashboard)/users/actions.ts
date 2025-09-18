@@ -1,11 +1,9 @@
 'use server'
 
 import type {
-  User,
   CreateUserInput,
   Mutation,
   Query,
-  QueryUserArgs,
   UpdateUserInput,
 } from '@prosspecta/codegen'
 import { revalidateTag } from 'next/cache'

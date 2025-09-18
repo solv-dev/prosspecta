@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { Lead, Query } from '@prosspecta/codegen'
+import type { Lead } from '@prosspecta/codegen'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import z from 'zod'
@@ -43,7 +43,7 @@ export function LeadForm({
     if (isUpdate && data?.id) {
       leadUpdate(data?.id, values)
         .then(() => toast.success('Lead atualizado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao atualizar lead.')
           console.error(error)
         })
@@ -53,7 +53,7 @@ export function LeadForm({
     } else {
       leadCreate(values)
         .then(() => toast.success('Lead criado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao criar lead.')
           console.error(error)
         })
@@ -65,42 +65,42 @@ export function LeadForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
         <FormInput
-          name="name"
-          type="text"
+          name='name'
+          type='text'
           control={form.control}
-          label="Nome"
-          placeholder="Nome do lead"
+          label='Nome'
+          placeholder='Nome do lead'
         />
         <FormInput
-          name="email"
-          type="email"
+          name='email'
+          type='email'
           control={form.control}
-          label="Email"
-          placeholder="john@example.com"
+          label='Email'
+          placeholder='john@example.com'
         />
         <FormInput
-          name="phone"
+          name='phone'
           control={form.control}
-          label="Telefone"
-          placeholder="+55 11 99999-9999"
+          label='Telefone'
+          placeholder='+55 11 99999-9999'
         />
         <FormInput
-          name="company"
-          type="text"
+          name='company'
+          type='text'
           control={form.control}
-          label="Empresa"
-          placeholder="Nome da empresa"
+          label='Empresa'
+          placeholder='Nome da empresa'
         />
         <FormInput
           isTextarea
-          name="description"
+          name='description'
           control={form.control}
-          label="Descrição"
-          placeholder="Descrição do lead"
+          label='Descrição'
+          placeholder='Descrição do lead'
         />
-        <Button className="w-full">
+        <Button className='w-full'>
           {isUpdate ? 'Atualizar' : 'Adicionar'}
         </Button>
       </form>

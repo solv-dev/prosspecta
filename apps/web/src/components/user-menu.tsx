@@ -26,16 +26,16 @@ export function UserMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          type="button"
-          className="cursor-pointer flex items-center justify-center size-12 text-primary bg-primary/5 rounded-full hover:bg-primary/10 hover:border-primary/50 border border-transparent transition ease-in"
+          type='button'
+          className='cursor-pointer flex items-center justify-center size-12 text-primary bg-primary/5 rounded-full hover:bg-primary/10 hover:border-primary/50 border border-transparent transition ease-in'
         >
-          <IconUser size={18} aria-hidden="true" />
+          <IconUser size={18} aria-hidden='true' />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-w-64">
+      <DropdownMenuContent className='max-w-64'>
         <DropdownMenuItem
           onClick={handleLogout}
-          className="cursor-pointer [&_svg]:text-muted-foreground hover:bg-primary/5 hover:[&_svg]:text-primary text-muted-foreground hover:text-primary transition ease-in"
+          className='cursor-pointer [&_svg]:text-muted-foreground hover:bg-primary/5 hover:[&_svg]:text-primary text-muted-foreground hover:text-primary transition ease-in'
         >
           <IconLogout size={16} />
           <span>Logout</span>

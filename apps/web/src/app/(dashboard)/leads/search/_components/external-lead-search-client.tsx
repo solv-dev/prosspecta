@@ -96,53 +96,52 @@ export function ExternalLeadSearchClient() {
     setIsSearching(true)
     setHasSearched(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise(resolve => setTimeout(resolve, 1500))
 
     let results = mockExternalLeads.filter(
-      (lead) =>
+      lead =>
         lead.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         lead.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
         lead.job_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        lead.technologies.some((tech) =>
-          tech.toLowerCase().includes(searchQuery.toLowerCase()),
-        ),
+        lead.technologies.some(tech =>
+          tech.toLowerCase().includes(searchQuery.toLowerCase())
+        )
     )
 
     if (filters.location) {
-      results = results.filter((lead) =>
-        lead.location.toLowerCase().includes(filters.location!.toLowerCase()),
+      results = results.filter(lead =>
+        lead.location.toLowerCase().includes(filters.location!.toLowerCase())
       )
     }
 
     if (filters.industry) {
       results = results.filter(
-        (lead) =>
-          lead.industry.toLowerCase() === filters.industry!.toLowerCase(),
+        lead => lead.industry.toLowerCase() === filters.industry!.toLowerCase()
       )
     }
 
     if (filters.company_size) {
       results = results.filter(
-        (lead) => lead.company_size === filters.company_size,
+        lead => lead.company_size === filters.company_size
       )
     }
 
     if (filters.job_title) {
-      results = results.filter((lead) =>
-        lead.job_title.toLowerCase().includes(filters.job_title!.toLowerCase()),
+      results = results.filter(lead =>
+        lead.job_title.toLowerCase().includes(filters.job_title!.toLowerCase())
       )
     }
 
     if (filters.technologies) {
       const searchTechs = filters.technologies
         .split(',')
-        .map((t) => t.trim().toLowerCase())
-      results = results.filter((lead) =>
-        searchTechs.some((searchTech) =>
-          lead.technologies.some((leadTech) =>
-            leadTech.toLowerCase().includes(searchTech),
-          ),
-        ),
+        .map(t => t.trim().toLowerCase())
+      results = results.filter(lead =>
+        searchTechs.some(searchTech =>
+          lead.technologies.some(leadTech =>
+            leadTech.toLowerCase().includes(searchTech)
+          )
+        )
       )
     }
 
@@ -152,10 +151,10 @@ export function ExternalLeadSearchClient() {
   }
 
   const handleSelectLead = (leadId: string) => {
-    setSelectedLeads((prev) =>
+    setSelectedLeads(prev =>
       prev.includes(leadId)
-        ? prev.filter((id) => id !== leadId)
-        : [...prev, leadId],
+        ? prev.filter(id => id !== leadId)
+        : [...prev, leadId]
     )
   }
 
@@ -163,13 +162,13 @@ export function ExternalLeadSearchClient() {
     if (selectedLeads.length === searchResults.length) {
       setSelectedLeads([])
     } else {
-      setSelectedLeads(searchResults.map((lead) => lead.id))
+      setSelectedLeads(searchResults.map(lead => lead.id))
     }
   }
 
   const handleImportSelected = async () => {
-    const selectedLeadsData = searchResults.filter((lead) =>
-      selectedLeads.includes(lead.id),
+    const selectedLeadsData = searchResults.filter(lead =>
+      selectedLeads.includes(lead.id)
     )
 
     if (selectedLeadsData.length === 0) {
@@ -182,8 +181,8 @@ export function ExternalLeadSearchClient() {
     try {
       const results = await bulkImportLeads(selectedLeadsData)
 
-      const successCount = results.filter((r) => r.success).length
-      const errorCount = results.filter((r) => !r.success).length
+      const successCount = results.filter(r => r.success).length
+      const errorCount = results.filter(r => !r.success).length
 
       if (errorCount === 0) {
         toast.success(`${successCount} leads importados com sucesso!`)
@@ -191,7 +190,7 @@ export function ExternalLeadSearchClient() {
         toast.error(`Erro ao importar leads. ${errorCount} falhas.`)
       } else {
         toast.warning(
-          `${successCount} leads importados com sucesso. ${errorCount} falhas.`,
+          `${successCount} leads importados com sucesso. ${errorCount} falhas.`
         )
       }
 
@@ -211,19 +210,19 @@ export function ExternalLeadSearchClient() {
   const hasActiveFilters = Object.values(filters).some(Boolean)
 
   return (
-    <div className="flex flex-col w-full h-full gap-6">
-      <div className="flex items-center gap-4">
-        <Link href="/leads">
-          <Button variant="ghost" size="sm" className="gap-2">
-            <IconArrowLeft className="size-4" />
+    <div className='flex flex-col w-full h-full gap-6'>
+      <div className='flex items-center gap-4'>
+        <Link href='/leads'>
+          <Button variant='ghost' size='sm' className='gap-2'>
+            <IconArrowLeft className='size-4' />
             Voltar
           </Button>
         </Link>
-        <div className="flex flex-col">
-          <Label className="text-[22px] font-semibold">
+        <div className='flex flex-col'>
+          <Label className='text-[22px] font-semibold'>
             Buscar Leads Externos
           </Label>
-          <Label className="text-sm font-light text-muted-foreground">
+          <Label className='text-sm font-light text-muted-foreground'>
             Encontre novos leads em bases de dados externas
           </Label>
         </div>
@@ -231,17 +230,17 @@ export function ExternalLeadSearchClient() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Busca por Palavras-chave</CardTitle>
+          <CardTitle className='text-lg'>Busca por Palavras-chave</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex gap-2">
-            <div className="flex-1">
+        <CardContent className='space-y-4'>
+          <div className='flex gap-2'>
+            <div className='flex-1'>
               <Input
-                placeholder="Digite palavras-chave: nome, empresa, cargo, tecnologias..."
+                placeholder='Digite palavras-chave: nome, empresa, cargo, tecnologias...'
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                className="text-base"
+                onChange={e => setSearchQuery(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleSearch()}
+                className='text-base'
               />
             </div>
             <ExternalLeadSearchFiltersDialog
@@ -253,27 +252,27 @@ export function ExternalLeadSearchClient() {
               onClick={handleSearch}
               disabled={isSearching || !searchQuery.trim()}
             >
-              <IconSearch className="size-4" />
+              <IconSearch className='size-4' />
               {isSearching ? 'Buscando...' : 'Buscar'}
             </Button>
           </div>
 
           {hasActiveFilters && (
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-muted-foreground">Filtros ativos:</span>
+            <div className='flex items-center gap-2 text-sm'>
+              <span className='text-muted-foreground'>Filtros ativos:</span>
               {Object.entries(filters).map(
                 ([key, value]) =>
                   value && (
-                    <Badge key={key} variant="secondary" className="text-xs">
+                    <Badge key={key} variant='secondary' className='text-xs'>
                       {key}: {value}
                     </Badge>
-                  ),
+                  )
               )}
               <Button
-                variant="ghost"
-                size="sm"
+                variant='ghost'
+                size='sm'
                 onClick={clearFilters}
-                className="h-auto p-1 text-primary hover:text-primary"
+                className='h-auto p-1 text-primary hover:text-primary'
               >
                 Limpar filtros
               </Button>
@@ -283,44 +282,44 @@ export function ExternalLeadSearchClient() {
       </Card>
 
       {hasSearched && (
-        <Card className="flex-1">
+        <Card className='flex-1'>
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className='flex items-center justify-between'>
               <div>
-                <CardTitle className="text-lg">Resultados da Busca</CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">
+                <CardTitle className='text-lg'>Resultados da Busca</CardTitle>
+                <p className='text-sm text-muted-foreground mt-1'>
                   {searchResults.length} leads encontrados
                 </p>
               </div>
 
               {searchResults.length > 0 && (
-                <div className="flex items-center gap-2">
+                <div className='flex items-center gap-2'>
                   <Button
-                    variant="outline"
-                    size="sm"
+                    variant='outline'
+                    size='sm'
                     onClick={handleSelectAll}
-                    className="gap-2"
+                    className='gap-2'
                   >
                     <Checkbox
                       checked={selectedLeads.length === searchResults.length}
-                      className="data-[state=checked]:bg-primary"
+                      className='data-[state=checked]:bg-primary'
                     />
                     Selecionar Todos
                   </Button>
 
                   {selectedLeads.length > 0 && (
                     <>
-                      <Button variant="outline" size="sm" className="gap-2">
-                        <IconDownload className="size-4" />
+                      <Button variant='outline' size='sm' className='gap-2'>
+                        <IconDownload className='size-4' />
                         Exportar ({selectedLeads.length})
                       </Button>
                       <Button
-                        size="sm"
+                        size='sm'
                         onClick={handleImportSelected}
                         disabled={isImporting}
-                        className="gap-2"
+                        className='gap-2'
                       >
-                        <IconUsersPlus className="size-4" />
+                        <IconUsersPlus className='size-4' />
                         {isImporting
                           ? 'Importando...'
                           : `Importar (${selectedLeads.length})`}
@@ -334,44 +333,44 @@ export function ExternalLeadSearchClient() {
 
           <CardContent>
             {isSearching ? (
-              <div className="flex items-center justify-center py-12">
-                <div className="flex items-center gap-3">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+              <div className='flex items-center justify-center py-12'>
+                <div className='flex items-center gap-3'>
+                  <div className='animate-spin rounded-full h-6 w-6 border-b-2 border-primary'></div>
                   <span>Buscando leads na base externa...</span>
                 </div>
               </div>
             ) : searchResults.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">
+              <div className='text-center py-12'>
+                <p className='text-muted-foreground'>
                   Nenhum lead encontrado com os critérios especificados.
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className='text-sm text-muted-foreground mt-2'>
                   Tente ajustar sua busca ou filtros.
                 </p>
               </div>
             ) : (
-              <div className="space-y-4">
-                {searchResults.map((lead) => (
-                  <Card key={lead.id} className="border border-border/50">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-4">
+              <div className='space-y-4'>
+                {searchResults.map(lead => (
+                  <Card key={lead.id} className='border border-border/50'>
+                    <CardContent className='p-4'>
+                      <div className='flex items-start gap-4'>
                         <Checkbox
                           checked={selectedLeads.includes(lead.id)}
                           onCheckedChange={() => handleSelectLead(lead.id)}
-                          className="mt-1"
+                          className='mt-1'
                         />
 
-                        <div className="flex-1 space-y-3">
-                          <div className="flex items-start justify-between">
+                        <div className='flex-1 space-y-3'>
+                          <div className='flex items-start justify-between'>
                             <div>
-                              <h3 className="font-semibold text-lg">
+                              <h3 className='font-semibold text-lg'>
                                 {lead.name}
                               </h3>
-                              <p className="text-sm text-muted-foreground">
+                              <p className='text-sm text-muted-foreground'>
                                 {lead.job_title} • {lead.company}
                               </p>
                             </div>
-                            <div className="text-right text-sm text-muted-foreground">
+                            <div className='text-right text-sm text-muted-foreground'>
                               <p>{lead.location}</p>
                               <p>{lead.industry}</p>
                             </div>
@@ -379,35 +378,35 @@ export function ExternalLeadSearchClient() {
 
                           <Separator />
 
-                          <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div className='grid grid-cols-2 gap-4 text-sm'>
                             <div>
-                              <Label className="text-xs text-muted-foreground">
+                              <Label className='text-xs text-muted-foreground'>
                                 Contato
                               </Label>
                               <p>{lead.email}</p>
                               {lead.phone && <p>{lead.phone}</p>}
                             </div>
                             <div>
-                              <Label className="text-xs text-muted-foreground">
+                              <Label className='text-xs text-muted-foreground'>
                                 Experiência
                               </Label>
                               <p>{lead.experience_level}</p>
-                              <p className="text-muted-foreground">
+                              <p className='text-muted-foreground'>
                                 {lead.company_size}
                               </p>
                             </div>
                           </div>
 
                           <div>
-                            <Label className="text-xs text-muted-foreground">
+                            <Label className='text-xs text-muted-foreground'>
                               Tecnologias/Habilidades
                             </Label>
-                            <div className="flex flex-wrap gap-1 mt-1">
-                              {lead.technologies.map((tech) => (
+                            <div className='flex flex-wrap gap-1 mt-1'>
+                              {lead.technologies.map(tech => (
                                 <Badge
                                   key={tech}
-                                  variant="outline"
-                                  className="text-xs"
+                                  variant='outline'
+                                  className='text-xs'
                                 >
                                   {tech}
                                 </Badge>
@@ -419,9 +418,9 @@ export function ExternalLeadSearchClient() {
                             <div>
                               <a
                                 href={lead.linkedin_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-primary hover:underline"
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='text-sm text-primary hover:underline'
                               >
                                 Ver perfil no LinkedIn →
                               </a>

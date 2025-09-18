@@ -24,19 +24,19 @@ export function LeadUpdateDialog() {
     }
 
     fetchLead(updateLead)
-      .then((data) => {
+      .then(data => {
         setLead(data)
       })
-      .catch((error) => console.error(error))
+      .catch(error => console.error(error))
   }, [updateLead])
 
   return (
     <Dialog open={!!updateLead} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className='sm:max-w-sm'>
         <DialogHeader>
           <DialogTitle>Editar Lead</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           {lead ? <LeadForm data={lead} isUpdate /> : <ContactFormSkeleton />}
         </div>
       </DialogContent>

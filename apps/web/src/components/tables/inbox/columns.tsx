@@ -18,6 +18,6 @@ export const columns: ColumnDef<Pipeline>[] = [
   {
     accessorKey: 'status',
     header: () => null,
-    cell: ({ row }) => <Badge variant="outline">{row.original.status}</Badge>,
+    cell: ({ row }) => <Badge variant='outline'>{row.original.status}</Badge>,
   },
 ]

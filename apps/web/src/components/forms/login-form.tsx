@@ -30,7 +30,7 @@ export function LoginForm() {
 
       if (!mutation.data.login) {
         toast.error(
-          'Erro ao enviar o email. Verifique as credenciais e tente novamente.',
+          'Erro ao enviar o email. Verifique as credenciais e tente novamente.'
         )
         return
       }
@@ -45,30 +45,30 @@ export function LoginForm() {
 
   return (
     <Form {...form}>
-      <form className="w-full" onSubmit={form.handleSubmit(onLoginSubmit)}>
-        <div className="flex flex-col items-center text-center mb-4">
-          <div className="flex items-center gap-2">
-            <Label className="text-[22px] font-semibold">
+      <form className='w-full' onSubmit={form.handleSubmit(onLoginSubmit)}>
+        <div className='flex flex-col items-center text-center mb-4'>
+          <div className='flex items-center gap-2'>
+            <Label className='text-[22px] font-semibold'>
               Bem-vindo de volta!{' '}
             </Label>
             <Image
               src={EmojiWavingHand}
-              alt="waving-hand-emoji"
-              className="size-8"
+              alt='waving-hand-emoji'
+              className='size-8'
             />
           </div>
-          <Label className="text-muted-foreground text-sm font-light text-balance">
+          <Label className='text-muted-foreground text-sm font-light text-balance'>
             Informe seu email para acessar a sua conta
           </Label>
         </div>
-        <div className="grid gap-2">
+        <div className='grid gap-2'>
           <FormInput
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             control={form.control}
-            placeholder="m@example.com"
+            placeholder='m@example.com'
           />
-          <Button type="submit" className="w-full">
+          <Button type='submit' className='w-full'>
             Login
           </Button>
         </div>

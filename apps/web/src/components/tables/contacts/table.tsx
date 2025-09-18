@@ -14,7 +14,7 @@ import { columns } from './columns'
 
 export const ContactsTable = ({ data }: { data: Contact[] }) => {
   return (
-    <div className="grid w-full h-full bg-black/40 overflow-hidden rounded-lg">
+    <div className='grid w-full h-full bg-black/40 overflow-hidden rounded-lg'>
       <TableProvider columns={columns} data={data ?? []}>
         <TableHeader>
           {({ headerGroup }) => (

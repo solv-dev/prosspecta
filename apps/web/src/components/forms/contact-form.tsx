@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { Contact, Query } from '@prosspecta/codegen'
+import type { Contact } from '@prosspecta/codegen'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import z from 'zod'
@@ -44,7 +44,7 @@ export function ContactForm({
     if (isUpdate && data?.id) {
       contactUpdate(data?.id, values)
         .then(() => toast.success('Contato atualizado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao atualizar contato.')
           console.error(error)
         })
@@ -54,7 +54,7 @@ export function ContactForm({
     } else {
       contactCreate(values)
         .then(() => toast.success('Contato criado com sucesso!'))
-        .catch((error) => {
+        .catch(error => {
           toast.error('Erro ao criar contato.')
           console.error(error)
         })
@@ -66,35 +66,35 @@ export function ContactForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
         <FormInput
-          name="name"
-          type="text"
+          name='name'
+          type='text'
           control={form.control}
-          label="Nome"
-          placeholder="Nome do contato"
+          label='Nome'
+          placeholder='Nome do contato'
         />
         <FormInput
-          name="email"
-          type="email"
+          name='email'
+          type='email'
           control={form.control}
-          label="Email"
-          placeholder="john@example.com"
+          label='Email'
+          placeholder='john@example.com'
         />
         <FormInput
-          name="phone"
+          name='phone'
           control={form.control}
-          label="Telefone"
-          placeholder="+55 11 99999-9999"
+          label='Telefone'
+          placeholder='+55 11 99999-9999'
         />
         <FormInput
-          name="company"
-          type="text"
+          name='company'
+          type='text'
           control={form.control}
-          label="Empresa"
-          placeholder="Nome da empresa"
+          label='Empresa'
+          placeholder='Nome da empresa'
         />
-        <Button className="w-full">
+        <Button className='w-full'>
           {isUpdate ? 'Atualizar' : 'Adicionar'}
         </Button>
       </form>

@@ -14,11 +14,11 @@ export function LeadCreateDialog() {
 
   return (
     <Dialog open={!!createLead} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className='sm:max-w-sm'>
         <DialogHeader>
           <DialogTitle>Criar Lead</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           <LeadForm />
         </div>
       </DialogContent>

@@ -1,11 +1,9 @@
 'use server'
 
 import type {
-  Lead,
   CreateLeadInput,
   Mutation,
   Query,
-  QueryLeadArgs,
   UpdateLeadInput,
 } from '@prosspecta/codegen'
 import { revalidateTag } from 'next/cache'
@@ -137,7 +135,7 @@ export async function bulkImportLeads(
     industry: string
     experience_level: string
     technologies: string[]
-  }>,
+  }>
 ) {
   const results = []
 

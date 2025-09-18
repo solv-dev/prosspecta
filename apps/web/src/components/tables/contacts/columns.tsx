@@ -18,15 +18,15 @@ export const columns: ColumnDef<Contact>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Nome" className="ml-3" />
+      <TableColumnHeader column={column} title='Nome' className='ml-3' />
     ),
     cell: ({ row }) => {
       const { setParams } = useContactsParams()
 
       return (
         <button
-          type="button"
-          className="-mb-3 ml-2 cursor-pointer"
+          type='button'
+          className='-mb-3 ml-2 cursor-pointer'
           onClick={() => setParams({ updateContact: row.original.id })}
         >
           {row.original.name}
@@ -36,7 +36,7 @@ export const columns: ColumnDef<Contact>[] = [
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => <TableColumnHeader column={column} title="Email" />,
+    header: ({ column }) => <TableColumnHeader column={column} title='Email' />,
   },
   {
     accessorKey: 'phone',
@@ -46,13 +46,13 @@ export const columns: ColumnDef<Contact>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Telefone" />
+      <TableColumnHeader column={column} title='Telefone' />
     ),
   },
   {
     accessorKey: 'company',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Empresa" />
+      <TableColumnHeader column={column} title='Empresa' />
     ),
   },
   {
@@ -65,7 +65,7 @@ export const columns: ColumnDef<Contact>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Criado em" />
+      <TableColumnHeader column={column} title='Criado em' />
     ),
   },
   {
@@ -75,13 +75,13 @@ export const columns: ColumnDef<Contact>[] = [
       const { setParams } = useContactsParams()
 
       return (
-        <div className="flex items-center justify-end">
+        <div className='flex items-center justify-end'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                type="button"
+                type='button'
                 onClick={() => console.log(row.original.id)}
-                className="bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer"
+                className='bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer'
               >
                 <IconDotsVertical />
               </button>
@@ -96,7 +96,7 @@ export const columns: ColumnDef<Contact>[] = [
               <DropdownMenuItem
                 onClick={() => setParams({ deleteContact: row.original.id })}
               >
-                <IconTrash className="h-4 w-4" />
+                <IconTrash className='h-4 w-4' />
                 Deletar
               </DropdownMenuItem>
             </DropdownMenuContent>

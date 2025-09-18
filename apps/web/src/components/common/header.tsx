@@ -40,41 +40,41 @@ function isLinkActive(pathname: string, href: string): boolean {
 export function Header() {
   const pathname = usePathname()
 
-  const user = {
+  const _user = {
     name: 'Cristian Freitas',
     email: 'cristian@solvs.dev',
   }
 
   return (
-    <header className="px-4 md:px-6">
-      <div className="h-18 flex items-center justify-between gap-4">
-        <div className="flex flex-1 items-center gap-2">
+    <header className='px-4 md:px-6'>
+      <div className='h-18 flex items-center justify-between gap-4'>
+        <div className='flex flex-1 items-center gap-2'>
           <Popover>
             <PopoverTrigger asChild>
               <Button
-                className="group size-8 md:hidden"
-                variant="ghost"
-                size="icon"
+                className='group size-8 md:hidden'
+                variant='ghost'
+                size='icon'
               >
                 <IconMenu />
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" className="w-36 p-1 md:hidden">
-              <NavigationMenu className="max-w-none *:w-full">
-                <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
+            <PopoverContent align='start' className='w-36 p-1 md:hidden'>
+              <NavigationMenu className='max-w-none *:w-full'>
+                <NavigationMenuList className='flex-col items-start gap-0 md:gap-2'>
                   {navigationLinks.map((link, index) => {
                     const Icon = link.icon
                     return (
-                      <NavigationMenuItem key={index} className="w-full">
+                      <NavigationMenuItem key={index} className='w-full'>
                         <NavigationMenuLink
                           href={link.href}
-                          className="flex-row items-center gap-2 py-1.5"
+                          className='flex-row items-center gap-2 py-1.5'
                           active={isLinkActive(pathname, link.href)}
                         >
                           <Icon
                             size={16}
-                            className="text-muted-foreground/80"
-                            aria-hidden="true"
+                            className='text-muted-foreground/80'
+                            aria-hidden='true'
                           />
                           <span>{link.label}</span>
                         </NavigationMenuLink>
@@ -85,12 +85,12 @@ export function Header() {
               </NavigationMenu>
             </PopoverContent>
           </Popover>
-          <div className="flex items-center gap-4">
-            <Logo className="size-8" />
-            <div className="w-[1px] bg-white/5 h-10 mr-2" />
+          <div className='flex items-center gap-4'>
+            <Logo className='size-8' />
+            <div className='w-[1px] bg-white/5 h-10 mr-2' />
           </div>
-          <NavigationMenu className="max-md:hidden">
-            <NavigationMenuList className="gap-2">
+          <NavigationMenu className='max-md:hidden'>
+            <NavigationMenuList className='gap-2'>
               {navigationLinks.map((link, index) => {
                 const Icon = link.icon
                 return (
@@ -99,7 +99,7 @@ export function Header() {
                       active={isLinkActive(pathname, link.href)}
                       href={link.href}
                     >
-                      <Icon size={16} aria-hidden="true" />
+                      <Icon size={16} aria-hidden='true' />
                       <span>{link.label}</span>
                     </NavigationMenuLink>
                   </NavigationMenuItem>

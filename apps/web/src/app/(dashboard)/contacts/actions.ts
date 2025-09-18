@@ -1,11 +1,9 @@
 'use server'
 
 import type {
-  Contact,
   CreateContactInput,
   Mutation,
   Query,
-  QueryContactArgs,
   UpdateContactInput,
 } from '@prosspecta/codegen'
 import { revalidateTag } from 'next/cache'
@@ -36,7 +34,7 @@ export async function fetchContacts() {
 }
 
 export async function fetchContact(
-  contactId: string,
+  contactId: string
 ): Promise<Query['contact']> {
   try {
     const response = await api

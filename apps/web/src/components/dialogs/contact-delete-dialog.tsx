@@ -24,7 +24,7 @@ export function ContactDeleteDialog() {
       .then(() => {
         toast.success('Contato deletado com sucesso!')
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error('Erro ao deletar contato')
         console.error(error)
       })
@@ -35,31 +35,31 @@ export function ContactDeleteDialog() {
 
   return (
     <Dialog open={!!deleteContactId} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
-        <DialogHeader className="-mb-3.5">
-          <div className="flex items-center gap-2">
-            <div className="bg-primary/10 flex size-12 items-center justify-center rounded-lg">
-              <IconTrash className="text-primary size-5" />
+      <DialogContent className='sm:max-w-sm'>
+        <DialogHeader className='-mb-3.5'>
+          <div className='flex items-center gap-2'>
+            <div className='bg-primary/10 flex size-12 items-center justify-center rounded-lg'>
+              <IconTrash className='text-primary size-5' />
             </div>
             <div>
-              <DialogTitle className="-mb-1 text-lg font-semibold">
+              <DialogTitle className='-mb-1 text-lg font-semibold'>
                 Deletar Contato
               </DialogTitle>
-              <DialogDescription className="text-muted-foreground text-xs">
+              <DialogDescription className='text-muted-foreground text-xs'>
                 Esta ação não pode ser desfeita.
               </DialogDescription>
             </div>
           </div>
         </DialogHeader>
-        <div className="py-4">
-          <p className="text-muted-foreground text-sm">
+        <div className='py-4'>
+          <p className='text-muted-foreground text-sm'>
             Tem certeza de que deseja excluir este contato? Isso removerá
             permanentemente o contato e todas as informações associadas da sua
             organização.
           </p>
         </div>
-        <DialogFooter className="gap-2">
-          <Button variant="outline" onClick={() => setParams(null)}>
+        <DialogFooter className='gap-2'>
+          <Button variant='outline' onClick={() => setParams(null)}>
             Cancelar
           </Button>
           <Button onClick={handleDelete}>Deletar</Button>

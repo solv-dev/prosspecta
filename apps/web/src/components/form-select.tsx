@@ -50,26 +50,26 @@ export const FormSelect = ({
             <FormLabel>
               {label}
               {isRequired && (
-                <strong className="font-semibold text-red-500">*</strong>
+                <strong className='font-semibold text-red-500'>*</strong>
               )}
             </FormLabel>
           )}
           <FormControl>
             <Select
               defaultValue={field.value}
-              onValueChange={(value) => {
+              onValueChange={value => {
                 field.onChange(value)
               }}
             >
               <SelectTrigger
-                className="h-10 w-full cursor-pointer"
+                className='h-10 w-full cursor-pointer'
                 aria-invalid={!!fieldState.error}
               >
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  {items.map((item) => (
+                  {items.map(item => (
                     <SelectItem key={item.value} value={item.value}>
                       {item.label}
                     </SelectItem>

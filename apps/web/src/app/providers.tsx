@@ -6,12 +6,12 @@ export function Providers({ children }: React.PropsWithChildren) {
   return (
     <NuqsAdapter>
       <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
+        attribute='class'
+        defaultTheme='dark'
         disableTransitionOnChange
       >
         {children}
-        <Toaster position="top-center" richColors />
+        <Toaster position='top-center' richColors />
       </ThemeProvider>
     </NuqsAdapter>
   )

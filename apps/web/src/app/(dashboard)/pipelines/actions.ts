@@ -3,10 +3,8 @@
 import type {
   CreatePipelineInput,
   Mutation,
-  Pipeline,
   PipelineStatus,
   Query,
-  QueryPipelineArgs,
   UpdatePipelineInput,
 } from '@prosspecta/codegen'
 import { revalidateTag } from 'next/cache'
@@ -37,7 +35,7 @@ export async function fetchPipelines() {
 }
 
 export async function fetchPipeline(
-  pipelineId: string,
+  pipelineId: string
 ): Promise<Query['pipeline']> {
   try {
     const response = await api

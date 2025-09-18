@@ -24,19 +24,19 @@ export function PipelineUpdateDialog() {
     }
 
     fetchPipeline(updatePipeline)
-      .then((data) => {
+      .then(data => {
         setPipeline(data)
       })
-      .catch((error) => console.error(error))
+      .catch(error => console.error(error))
   }, [updatePipeline])
 
   return (
     <Dialog open={!!updatePipeline} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className='sm:max-w-sm'>
         <DialogHeader>
           <DialogTitle>Editar Pipeline</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           {pipeline ? (
             <PipelineForm data={pipeline} isUpdate />
           ) : (

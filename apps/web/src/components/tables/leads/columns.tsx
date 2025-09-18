@@ -18,15 +18,15 @@ export const columns: ColumnDef<Lead>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Nome" className="ml-3" />
+      <TableColumnHeader column={column} title='Nome' className='ml-3' />
     ),
     cell: ({ row }) => {
       const { setParams } = useLeadsParams()
 
       return (
         <button
-          type="button"
-          className="-mb-3 ml-2 cursor-pointer"
+          type='button'
+          className='-mb-3 ml-2 cursor-pointer'
           onClick={() => setParams({ updateLead: row.original.id })}
         >
           {row.original.name}
@@ -36,7 +36,7 @@ export const columns: ColumnDef<Lead>[] = [
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => <TableColumnHeader column={column} title="Email" />,
+    header: ({ column }) => <TableColumnHeader column={column} title='Email' />,
   },
   {
     accessorKey: 'phone',
@@ -46,22 +46,22 @@ export const columns: ColumnDef<Lead>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Telefone" />
+      <TableColumnHeader column={column} title='Telefone' />
     ),
   },
   {
     accessorKey: 'company',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Empresa" />
+      <TableColumnHeader column={column} title='Empresa' />
     ),
   },
   {
     accessorKey: 'description',
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Descrição" />
+      <TableColumnHeader column={column} title='Descrição' />
     ),
     cell: ({ row }) => (
-      <span className="max-w-[200px] truncate">
+      <span className='max-w-[200px] truncate'>
         {row.original.description || '-'}
       </span>
     ),
@@ -76,7 +76,7 @@ export const columns: ColumnDef<Lead>[] = [
       </span>
     ),
     header: ({ column }) => (
-      <TableColumnHeader column={column} title="Criado em" />
+      <TableColumnHeader column={column} title='Criado em' />
     ),
   },
   {
@@ -86,13 +86,13 @@ export const columns: ColumnDef<Lead>[] = [
       const { setParams } = useLeadsParams()
 
       return (
-        <div className="flex items-center justify-end">
+        <div className='flex items-center justify-end'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                type="button"
+                type='button'
                 onClick={() => console.log(row.original.id)}
-                className="bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer"
+                className='bg-transparent hover:bg-primary/10 hover:text-primary text-white [&_svg]:size-4 size-8 rounded-full flex items-center justify-center cursor-pointer'
               >
                 <IconDotsVertical />
               </button>
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Lead>[] = [
               <DropdownMenuItem
                 onClick={() => setParams({ deleteLead: row.original.id })}
               >
-                <IconTrash className="h-4 w-4" />
+                <IconTrash className='h-4 w-4' />
                 Deletar
               </DropdownMenuItem>
             </DropdownMenuContent>

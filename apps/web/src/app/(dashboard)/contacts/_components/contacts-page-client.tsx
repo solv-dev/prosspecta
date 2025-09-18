@@ -1,7 +1,7 @@
 'use client'
 
 import type { Contact } from '@prosspecta/codegen'
-import { IconPlus, IconTableExport, IconUsersPlus } from '@tabler/icons-react'
+import { IconTableExport, IconUsersPlus } from '@tabler/icons-react'
 import { useMemo } from 'react'
 import {
   type ContactFilters,

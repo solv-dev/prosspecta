@@ -24,19 +24,19 @@ export function ContactUpdateDialog() {
     }
 
     fetchContact(updateContact)
-      .then((data) => {
+      .then(data => {
         setContact(data)
       })
-      .catch((error) => console.error(error))
+      .catch(error => console.error(error))
   }, [updateContact])
 
   return (
     <Dialog open={!!updateContact} onOpenChange={() => setParams(null)}>
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className='sm:max-w-sm'>
         <DialogHeader>
           <DialogTitle>Editar Contato</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           {contact ? (
             <ContactForm data={contact} isUpdate />
           ) : (

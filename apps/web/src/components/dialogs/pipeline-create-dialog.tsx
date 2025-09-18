@@ -18,7 +18,7 @@ export function PipelineCreateDialog() {
         <DialogHeader>
           <DialogTitle>Criar Pipeline</DialogTitle>
         </DialogHeader>
-        <div className="flex flex-col gap-4 w-full h-full">
+        <div className='flex flex-col gap-4 w-full h-full'>
           <PipelineForm />
         </div>
       </DialogContent>

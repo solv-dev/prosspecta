@@ -13,11 +13,11 @@ export default async function PipelinesPage() {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full gap-4">
-        <div className="grid grid-cols-2">
-          <div className="flex flex-col justify-end">
-            <Label className="text-[22px] font-semibold">Pipelines</Label>
-            <Label className="text-sm font-light text-muted-foreground">
+      <div className='flex flex-col w-full h-full gap-4'>
+        <div className='grid grid-cols-2'>
+          <div className='flex flex-col justify-end'>
+            <Label className='text-[22px] font-semibold'>Pipelines</Label>
+            <Label className='text-sm font-light text-muted-foreground'>
               Gerencie os seus pipelines registrados
             </Label>
           </div>

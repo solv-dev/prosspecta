@@ -93,23 +93,23 @@ export function ExternalLeadSearchFiltersDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
-          size="icon"
+          variant='outline'
+          size='icon'
           className={cn(
             'gap-2',
-            hasActiveFilters && 'border-primary bg-primary/10',
+            hasActiveFilters && 'border-primary bg-primary/10'
           )}
         >
-          <IconFilter className="size-4" />
+          <IconFilter className='size-4' />
           {hasActiveFilters && (
-            <span className="ml-1 rounded-full bg-primary px-1.5 py-0.5 text-xs text-primary-foreground">
+            <span className='ml-1 rounded-full bg-primary px-1.5 py-0.5 text-xs text-primary-foreground'>
               {Object.values(filters).filter(Boolean).length}
             </span>
           )}
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className='sm:max-w-[600px]'>
         <DialogHeader>
           <DialogTitle>Filtros Avançados de Busca</DialogTitle>
           <DialogDescription>
@@ -117,41 +117,41 @@ export function ExternalLeadSearchFiltersDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-6 py-4">
+        <div className='space-y-6 py-4'>
           {/* Localização */}
-          <div className="space-y-2">
-            <Label htmlFor="location" className="text-sm font-medium">
+          <div className='space-y-2'>
+            <Label htmlFor='location' className='text-sm font-medium'>
               Localização
             </Label>
             <Input
-              id="location"
-              placeholder="Ex: São Paulo, SP ou Brasil"
+              id='location'
+              placeholder='Ex: São Paulo, SP ou Brasil'
               value={localFilters.location || ''}
-              onChange={(e) =>
+              onChange={e =>
                 setLocalFilters({ ...localFilters, location: e.target.value })
               }
             />
-            <p className="text-xs text-muted-foreground">
+            <p className='text-xs text-muted-foreground'>
               Cidade, estado ou país para filtrar leads por localização
             </p>
           </div>
 
           {/* Tamanho da Empresa */}
-          <div className="space-y-2">
-            <Label htmlFor="company-size" className="text-sm font-medium">
+          <div className='space-y-2'>
+            <Label htmlFor='company-size' className='text-sm font-medium'>
               Tamanho da Empresa
             </Label>
             <Select
               value={localFilters.company_size || ''}
-              onValueChange={(value) =>
+              onValueChange={value =>
                 setLocalFilters({ ...localFilters, company_size: value })
               }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Selecionar tamanho da empresa" />
+                <SelectValue placeholder='Selecionar tamanho da empresa' />
               </SelectTrigger>
               <SelectContent>
-                {companySizeOptions.map((option) => (
+                {companySizeOptions.map(option => (
                   <SelectItem key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>
@@ -161,21 +161,21 @@ export function ExternalLeadSearchFiltersDialog({
           </div>
 
           {/* Setor */}
-          <div className="space-y-2">
-            <Label htmlFor="industry" className="text-sm font-medium">
+          <div className='space-y-2'>
+            <Label htmlFor='industry' className='text-sm font-medium'>
               Setor/Indústria
             </Label>
             <Select
               value={localFilters.industry || ''}
-              onValueChange={(value) =>
+              onValueChange={value =>
                 setLocalFilters({ ...localFilters, industry: value })
               }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Selecionar setor" />
+                <SelectValue placeholder='Selecionar setor' />
               </SelectTrigger>
               <SelectContent>
-                {industryOptions.map((option) => (
+                {industryOptions.map(option => (
                   <SelectItem key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>
@@ -184,17 +184,17 @@ export function ExternalLeadSearchFiltersDialog({
             </Select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className='grid grid-cols-2 gap-4'>
             {/* Cargo/Função */}
-            <div className="space-y-2">
-              <Label htmlFor="job-title" className="text-sm font-medium">
+            <div className='space-y-2'>
+              <Label htmlFor='job-title' className='text-sm font-medium'>
                 Cargo/Função
               </Label>
               <Input
-                id="job-title"
-                placeholder="Ex: Desenvolvedor, Gerente..."
+                id='job-title'
+                placeholder='Ex: Desenvolvedor, Gerente...'
                 value={localFilters.job_title || ''}
-                onChange={(e) =>
+                onChange={e =>
                   setLocalFilters({
                     ...localFilters,
                     job_title: e.target.value,
@@ -204,21 +204,21 @@ export function ExternalLeadSearchFiltersDialog({
             </div>
 
             {/* Nível de Experiência */}
-            <div className="space-y-2">
-              <Label htmlFor="experience-level" className="text-sm font-medium">
+            <div className='space-y-2'>
+              <Label htmlFor='experience-level' className='text-sm font-medium'>
                 Nível de Experiência
               </Label>
               <Select
                 value={localFilters.experience_level || ''}
-                onValueChange={(value) =>
+                onValueChange={value =>
                   setLocalFilters({ ...localFilters, experience_level: value })
                 }
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecionar nível" />
+                  <SelectValue placeholder='Selecionar nível' />
                 </SelectTrigger>
                 <SelectContent>
-                  {experienceLevelOptions.map((option) => (
+                  {experienceLevelOptions.map(option => (
                     <SelectItem key={option.value} value={option.value}>
                       {option.label}
                     </SelectItem>
@@ -229,34 +229,34 @@ export function ExternalLeadSearchFiltersDialog({
           </div>
 
           {/* Tecnologias/Habilidades */}
-          <div className="space-y-2">
-            <Label htmlFor="technologies" className="text-sm font-medium">
+          <div className='space-y-2'>
+            <Label htmlFor='technologies' className='text-sm font-medium'>
               Tecnologias/Habilidades
             </Label>
             <Input
-              id="technologies"
-              placeholder="Ex: React, Node.js, Python..."
+              id='technologies'
+              placeholder='Ex: React, Node.js, Python...'
               value={localFilters.technologies || ''}
-              onChange={(e) =>
+              onChange={e =>
                 setLocalFilters({
                   ...localFilters,
                   technologies: e.target.value,
                 })
               }
             />
-            <p className="text-xs text-muted-foreground">
+            <p className='text-xs text-muted-foreground'>
               Separar múltiplas tecnologias por vírgula
             </p>
           </div>
         </div>
 
-        <DialogFooter className="gap-2">
+        <DialogFooter className='gap-2'>
           <Button
-            variant="outline"
+            variant='outline'
             onClick={handleClearFilters}
-            className="gap-2"
+            className='gap-2'
           >
-            <IconX className="size-4" />
+            <IconX className='size-4' />
             Limpar Filtros
           </Button>
           <Button onClick={handleApplyFilters}>Aplicar Filtros</Button>
