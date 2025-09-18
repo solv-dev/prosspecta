@@ -161,10 +161,19 @@ export const PipelinesKanban = ({ pipelines }: { pipelines: Pipeline[] }) => {
       const firstPipeline = changedPipelines[0]!
 
       // Garantir que o status é um valor válido do enum PipelineStatus
-      const validStatuses = ['NEW', 'CONTACTED', 'QUALIFIED', 'PROPOSAL', 'WON', 'LOST', 'CANCELED', 'DISCARDED']
+      const validStatuses = [
+        'NEW',
+        'CONTACTED',
+        'QUALIFIED',
+        'PROPOSAL',
+        'WON',
+        'LOST',
+        'CANCELED',
+        'DISCARDED',
+      ]
       const statusToUpdate = validStatuses.includes(firstPipeline.column)
-        ? firstPipeline.column as PipelineStatus
-        : 'NEW' as PipelineStatus
+        ? (firstPipeline.column as PipelineStatus)
+        : ('NEW' as PipelineStatus)
 
       await pipelineUpdateStatus(firstPipeline.id, statusToUpdate)
         .then(() => {

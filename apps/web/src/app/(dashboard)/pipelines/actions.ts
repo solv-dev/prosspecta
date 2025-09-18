@@ -130,7 +130,10 @@ export async function pipelineUpdateStatus(id: string, status: PipelineStatus) {
         },
         body: JSON.stringify(payload),
       })
-      .json<{ data: { pipelineUpdate: Mutation['pipelineUpdate'] }; errors?: any[] }>()
+      .json<{
+        data: { pipelineUpdate: Mutation['pipelineUpdate'] }
+        errors?: any[]
+      }>()
 
     if (response.errors) {
       console.error('GraphQL errors:', response.errors)

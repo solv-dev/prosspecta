@@ -17,7 +17,7 @@ export function usePipelineViewParams() {
       params.set('view', view)
       router.push(`?${params.toString()}`)
     },
-    [router, searchParams]
+    [router, searchParams],
   )
 
   return {

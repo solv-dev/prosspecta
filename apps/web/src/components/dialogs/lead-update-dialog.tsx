@@ -37,11 +37,7 @@ export function LeadUpdateDialog() {
           <DialogTitle>Editar Lead</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-4 w-full h-full">
-          {lead ? (
-            <LeadForm data={lead} isUpdate />
-          ) : (
-            <ContactFormSkeleton />
-          )}
+          {lead ? <LeadForm data={lead} isUpdate /> : <ContactFormSkeleton />}
         </div>
       </DialogContent>
     </Dialog>

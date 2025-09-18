@@ -45,7 +45,9 @@ export const columns: ColumnDef<Contact>[] = [
         {row.original.phone ? formatPhoneNumber(row.original.phone) : '-'}
       </span>
     ),
-    header: ({ column }) => <TableColumnHeader column={column} title="Telefone" />,
+    header: ({ column }) => (
+      <TableColumnHeader column={column} title="Telefone" />
+    ),
   },
   {
     accessorKey: 'company',

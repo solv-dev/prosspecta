@@ -35,9 +35,7 @@ export async function fetchLeads() {
   return response.data.leads
 }
 
-export async function fetchLead(
-  leadId: string,
-): Promise<Query['lead']> {
+export async function fetchLead(leadId: string): Promise<Query['lead']> {
   try {
     const response = await api
       .post('graphql', {
@@ -126,4 +124,40 @@ export async function leadDelete(id: string) {
   revalidateTag('leads')
 
   return response.data.leadDelete
+}
+
+export async function bulkImportLeads(
+  externalLeads: Array<{
+    name: string
+    email: string
+    phone?: string
+    company: string
+    job_title: string
+    location: string
+    industry: string
+    experience_level: string
+    technologies: string[]
+  }>,
+) {
+  const results = []
+
+  for (const externalLead of externalLeads) {
+    try {
+      const leadData: CreateLeadInput = {
+        name: externalLead.name,
+        email: externalLead.email,
+        phone: externalLead.phone || '',
+        company: externalLead.company,
+        description: `Cargo: ${externalLead.job_title}\nLocalização: ${externalLead.location}\nSetor: ${externalLead.industry}\nExperiência: ${externalLead.experience_level}\nTecnologias: ${externalLead.technologies.join(', ')}`,
+      }
+
+      const result = await leadCreate(leadData)
+      results.push({ success: true, lead: result, originalData: externalLead })
+    } catch (error) {
+      console.error(`Error importing lead ${externalLead.name}:`, error)
+      results.push({ success: false, error: error, originalData: externalLead })
+    }
+  }
+
+  return results
 }

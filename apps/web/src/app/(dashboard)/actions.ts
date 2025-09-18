@@ -4,7 +4,9 @@ import type { Query } from '@prosspecta/codegen'
 import { DashboardMetricsQuery, PipelinesQuery } from '@/graphql/queries'
 import { api } from '@/lib/api'
 
-export async function fetchDashboardMetrics(): Promise<Query['dashboardMetrics']> {
+export async function fetchDashboardMetrics(): Promise<
+  Query['dashboardMetrics']
+> {
   try {
     const response = await api
       .post('graphql', {
@@ -51,25 +53,34 @@ export async function fetchPipelineAnalytics() {
   if (!pipelines) return []
 
   // Agrupar por mês e contar ativas vs finalizadas
-  const monthlyData = pipelines.reduce((acc, pipeline) => {
-    if (!pipeline?.createdAt) return acc
+  const monthlyData = pipelines.reduce(
+    (acc, pipeline) => {
+      if (!pipeline?.createdAt) return acc
 
-    const date = new Date(pipeline.createdAt)
-    const monthKey = date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+      const date = new Date(pipeline.createdAt)
+      const monthKey = date.toLocaleDateString('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      })
 
-    if (!acc[monthKey]) {
-      acc[monthKey] = { month: monthKey, ativas: 0, finalizadas: 0 }
-    }
+      if (!acc[monthKey]) {
+        acc[monthKey] = { month: monthKey, ativas: 0, finalizadas: 0 }
+      }
 
-    // Considerar WON e LOST como finalizadas, resto como ativas
-    if (pipeline.status === 'WON' || pipeline.status === 'LOST') {
-      acc[monthKey].finalizadas++
-    } else {
-      acc[monthKey].ativas++
-    }
+      // Considerar WON e LOST como finalizadas, resto como ativas
+      if (pipeline.status === 'WON' || pipeline.status === 'LOST') {
+        acc[monthKey].finalizadas++
+      } else {
+        acc[monthKey].ativas++
+      }
 
-    return acc
-  }, {} as Record<string, { month: string; ativas: number; finalizadas: number }>)
+      return acc
+    },
+    {} as Record<
+      string,
+      { month: string; ativas: number; finalizadas: number }
+    >,
+  )
 
   return Object.values(monthlyData).slice(-6) // Últimos 6 meses
 }

@@ -69,12 +69,6 @@ export function PipelinesPageActions() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button type="button" variant="outline">
-        <IconFilter />
-      </Button>
-      <Button type="button" variant="outline">
-        <IconTableExport />
-      </Button>
       <Button
         type="button"
         variant="outline"

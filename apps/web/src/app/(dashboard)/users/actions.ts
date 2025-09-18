@@ -35,9 +35,7 @@ export async function fetchUsers() {
   return response.data.users
 }
 
-export async function fetchUser(
-  userId: string,
-): Promise<Query['user']> {
+export async function fetchUser(userId: string): Promise<Query['user']> {
   try {
     const response = await api
       .post('graphql', {

@@ -703,9 +703,9 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                   <IconTrendingUp className="size-4" />
                 </div>
                 <div className="text-muted-foreground">
-                  Mostrando total de visitantes dos últimos 6 meses. Este é apenas
-                  um texto aleatório para testar o layout. Ele se estende por várias linhas
-                  e deve quebrar automaticamente.
+                  Mostrando total de visitantes dos últimos 6 meses. Este é
+                  apenas um texto aleatório para testar o layout. Ele se estende
+                  por várias linhas e deve quebrar automaticamente.
                 </div>
               </div>
               <Separator />
@@ -724,9 +724,7 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     <SelectValue placeholder="Selecionar um tipo" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Table of Contents">
-                      Índice
-                    </SelectItem>
+                    <SelectItem value="Table of Contents">Índice</SelectItem>
                     <SelectItem value="Executive Summary">
                       Resumo Executivo
                     </SelectItem>
