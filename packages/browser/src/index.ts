@@ -20,6 +20,14 @@ const app = new Elysia()
     async ({ body }) => {
       try {
         const leads = Array.isArray(body) ? body : [body]
+
+        // Validar que cada lead tem pelo menos email ou telefone
+        for (const lead of leads) {
+          if (!lead.email && !lead.phone) {
+            return { success: false, error: 'Cada lead deve ter pelo menos email ou telefone' }
+          }
+        }
+
         const createdLeads = await prisma.lead.createMany({
           data: leads,
         })
@@ -33,7 +41,7 @@ const app = new Elysia()
       body: t.Union([
         t.Object({
           name: t.String(),
-          email: t.String(),
+          email: t.Optional(t.String()),
           description: t.Optional(t.String()),
           phone: t.Optional(t.String()),
           company: t.Optional(t.String()),
@@ -53,7 +61,7 @@ const app = new Elysia()
         t.Array(
           t.Object({
             name: t.String(),
-            email: t.String(),
+            email: t.Optional(t.String()),
             description: t.Optional(t.String()),
             phone: t.Optional(t.String()),
             company: t.Optional(t.String()),

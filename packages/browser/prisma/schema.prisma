@@ -12,7 +12,7 @@ model Lead {
 
   name        String
   description String?
-  email       String
+  email       String?
   phone       String?
   company     String?
   status      Status  @default(NEW)

@@ -1,0 +1,392 @@
+[
+  {
+    "name": "Ana Silva",
+    "email": "ana.silva@techconnect.com.br",
+    "phone": "+55 11 99876-5432",
+    "company": "TechConnect Soluções",
+    "description": "Interessada em soluções de automação para e-commerce",
+    "status": "NEW"
+  },
+  {
+    "name": "Carlos Oliveira",
+    "email": "c.oliveira@inovacorp.com.br",
+    "phone": "+55 21 98765-4321",
+    "company": "InovaCorp",
+    "description": "Busca implementar CRM para equipe de vendas",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Maria Santos",
+    "email": "maria.santos@digitalplus.com.br",
+    "company": "Digital Plus Marketing",
+    "description": "Procura por ferramentas de gestão de leads",
+    "status": "NEW"
+  },
+  {
+    "name": "João Pereira",
+    "phone": "+55 31 97654-3210",
+    "company": "StartUp Ventures",
+    "description": "Startup interessada em pipeline de vendas",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Fernanda Costa",
+    "email": "fernanda@crescimentodigital.com.br",
+    "phone": "+55 47 96543-2109",
+    "company": "Crescimento Digital",
+    "description": "Agência digital buscando otimização de processos",
+    "status": "NEW"
+  },
+  {
+    "name": "Ricardo Almeida",
+    "email": "ricardo.almeida@megasolucoes.com.br",
+    "phone": "+55 85 95432-1098",
+    "company": "Mega Soluções Empresariais",
+    "description": "Empresa de consultoria interessada em automação",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Juliana Barbosa",
+    "email": "juliana@smartbusiness.com.br",
+    "company": "Smart Business Consulting",
+    "description": "Consultoria focada em transformação digital",
+    "status": "NEW"
+  },
+  {
+    "name": "Pedro Rodrigues",
+    "phone": "+55 27 94321-0987",
+    "company": "Rodrigues & Associados",
+    "description": "Escritório de advocacia buscando gestão de clientes",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Carla Mendes",
+    "email": "carla.mendes@futurotech.com.br",
+    "phone": "+55 81 93210-9876",
+    "company": "Futuro Tech",
+    "description": "Empresa de tecnologia em expansão",
+    "status": "NEW"
+  },
+  {
+    "name": "Roberto Lima",
+    "email": "roberto@excellencegroup.com.br",
+    "phone": "+55 51 92109-8765",
+    "company": "Excellence Group",
+    "description": "Grupo empresarial interessado em CRM corporativo",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Patrícia Ferreira",
+    "email": "patricia.ferreira@vendasplus.com.br",
+    "company": "Vendas Plus",
+    "description": "Empresa de vendas online buscando automação",
+    "status": "NEW"
+  },
+  {
+    "name": "Anderson Souza",
+    "phone": "+55 62 91098-7654",
+    "company": "Souza Empreendimentos",
+    "description": "Construtora interessada em gestão de leads imobiliários",
+    "status": "NEW"
+  },
+  {
+    "name": "Luciana Martins",
+    "email": "luciana@marketingpro.com.br",
+    "phone": "+55 71 90987-6543",
+    "company": "Marketing Pro",
+    "description": "Agência de marketing digital",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Marcos Vieira",
+    "email": "marcos.vieira@techsolutions.com.br",
+    "phone": "+55 48 99876-5432",
+    "company": "Tech Solutions",
+    "description": "Empresa de TI buscando ferramentas de gestão",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Renata Campos",
+    "email": "renata@inovacaodigital.com.br",
+    "company": "Inovação Digital",
+    "description": "Startup de fintech interessada em CRM",
+    "status": "NEW"
+  },
+  {
+    "name": "Gustavo Nunes",
+    "phone": "+55 19 98765-4321",
+    "company": "Nunes Consultoria",
+    "description": "Consultoria empresarial focada em vendas",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Sabrina Reis",
+    "email": "sabrina.reis@crescevendas.com.br",
+    "phone": "+55 65 97654-3210",
+    "company": "Cresce Vendas",
+    "description": "Empresa especializada em treinamento de vendas",
+    "status": "NEW"
+  },
+  {
+    "name": "Bruno Cardoso",
+    "email": "bruno@digitalhouse.com.br",
+    "phone": "+55 41 96543-2109",
+    "company": "Digital House",
+    "description": "Escola de tecnologia interessada em gestão de alunos",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Vanessa Torres",
+    "email": "vanessa.torres@megamarketing.com.br",
+    "company": "Mega Marketing",
+    "description": "Agência de publicidade buscando automação",
+    "status": "NEW"
+  },
+  {
+    "name": "Thiago Gomes",
+    "phone": "+55 84 95432-1098",
+    "company": "Gomes Empreendimentos",
+    "description": "Empresa de construção civil",
+    "status": "NEW"
+  },
+  {
+    "name": "Camila Rocha",
+    "email": "camila@smartsales.com.br",
+    "phone": "+55 61 94321-0987",
+    "company": "Smart Sales",
+    "description": "Empresa de vendas B2B",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Felipe Araujo",
+    "email": "felipe.araujo@techcorp.com.br",
+    "phone": "+55 11 93210-9876",
+    "company": "TechCorp Brasil",
+    "description": "Multinacional de tecnologia",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Amanda Dias",
+    "email": "amanda@vendasdigitais.com.br",
+    "company": "Vendas Digitais",
+    "description": "Consultoria em vendas online",
+    "status": "NEW"
+  },
+  {
+    "name": "Rafael Monteiro",
+    "phone": "+55 34 92109-8765",
+    "company": "Monteiro & Filhos",
+    "description": "Empresa familiar buscando modernização",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Priscila Castro",
+    "email": "priscila.castro@leadgeneration.com.br",
+    "phone": "+55 75 91098-7654",
+    "company": "Lead Generation Pro",
+    "description": "Empresa especializada em geração de leads",
+    "status": "NEW"
+  },
+  {
+    "name": "Leonardo Silva",
+    "email": "leonardo@businessgrowth.com.br",
+    "phone": "+55 67 90987-6543",
+    "company": "Business Growth",
+    "description": "Consultoria em crescimento empresarial",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Natália Lopes",
+    "email": "natalia.lopes@salesforce.com.br",
+    "company": "SalesForce Brasil",
+    "description": "Representante interessada em integração",
+    "status": "NEW"
+  },
+  {
+    "name": "Diego Fernandes",
+    "phone": "+55 86 99876-5432",
+    "company": "Fernandes Tech",
+    "description": "Empresa de desenvolvimento de software",
+    "status": "NEW"
+  },
+  {
+    "name": "Larissa Freitas",
+    "email": "larissa@marketingautomation.com.br",
+    "phone": "+55 22 98765-4321",
+    "company": "Marketing Automation",
+    "description": "Especialista em automação de marketing",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Rodrigo Macedo",
+    "email": "rodrigo.macedo@expandir.com.br",
+    "phone": "+55 43 97654-3210",
+    "company": "Expandir Negócios",
+    "description": "Consultoria em expansão de negócios",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Carolina Pinto",
+    "email": "carolina@digitalstrategy.com.br",
+    "company": "Digital Strategy",
+    "description": "Agência de estratégia digital",
+    "status": "NEW"
+  },
+  {
+    "name": "Vinícius Santos",
+    "phone": "+55 49 96543-2109",
+    "company": "Santos Inovação",
+    "description": "Hub de inovação empresarial",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Daniela Ribeiro",
+    "email": "daniela.ribeiro@crmsolutions.com.br",
+    "phone": "+55 68 95432-1098",
+    "company": "CRM Solutions",
+    "description": "Empresa especializada em CRM",
+    "status": "NEW"
+  },
+  {
+    "name": "Fábio Costa",
+    "email": "fabio@techinnovation.com.br",
+    "phone": "+55 69 94321-0987",
+    "company": "Tech Innovation",
+    "description": "Startup de inovação tecnológica",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Tatiana Moura",
+    "email": "tatiana.moura@salesexcellence.com.br",
+    "company": "Sales Excellence",
+    "description": "Consultoria em excelência em vendas",
+    "status": "NEW"
+  },
+  {
+    "name": "Henrique Barros",
+    "phone": "+55 82 93210-9876",
+    "company": "Barros Desenvolvimento",
+    "description": "Empresa de desenvolvimento imobiliário",
+    "status": "NEW"
+  },
+  {
+    "name": "Gabriela Andrade",
+    "email": "gabriela@leadmanagement.com.br",
+    "phone": "+55 83 92109-8765",
+    "company": "Lead Management Pro",
+    "description": "Especialista em gestão de leads",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Alexandre Teixeira",
+    "email": "alexandre.teixeira@businesstech.com.br",
+    "phone": "+55 87 91098-7654",
+    "company": "Business Tech",
+    "description": "Empresa de tecnologia para negócios",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Cristiane Moreira",
+    "email": "cristiane@digitalmarketing.com.br",
+    "company": "Digital Marketing Plus",
+    "description": "Agência de marketing digital",
+    "status": "NEW"
+  },
+  {
+    "name": "Márcio Cunha",
+    "phone": "+55 88 90987-6543",
+    "company": "Cunha Empreendimentos",
+    "description": "Grupo empresarial diversificado",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Bianca Cavalcanti",
+    "email": "bianca.cavalcanti@salesautomation.com.br",
+    "phone": "+55 79 99876-5432",
+    "company": "Sales Automation",
+    "description": "Empresa de automação de vendas",
+    "status": "NEW"
+  },
+  {
+    "name": "Paulo Mendonça",
+    "email": "paulo@growthhacking.com.br",
+    "phone": "+55 63 98765-4321",
+    "company": "Growth Hacking Brasil",
+    "description": "Consultoria em growth hacking",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Mônica Pereira",
+    "email": "monica.pereira@leadconversion.com.br",
+    "company": "Lead Conversion",
+    "description": "Especialista em conversão de leads",
+    "status": "NEW"
+  },
+  {
+    "name": "Sérgio Batista",
+    "phone": "+55 96 97654-3210",
+    "company": "Batista Consultoria",
+    "description": "Consultoria empresarial estratégica",
+    "status": "NEW"
+  },
+  {
+    "name": "Evelyn Cardoso",
+    "email": "evelyn@smartcrm.com.br",
+    "phone": "+55 98 96543-2109",
+    "company": "Smart CRM",
+    "description": "Empresa de CRM inteligente",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Luciano Farias",
+    "email": "luciano.farias@businesssolutions.com.br",
+    "phone": "+55 85 95432-1098",
+    "company": "Business Solutions",
+    "description": "Soluções empresariais integradas",
+    "status": "PROPOSAL"
+  },
+  {
+    "name": "Simone Azevedo",
+    "email": "simone@marketingdigital.com.br",
+    "company": "Marketing Digital Avançado",
+    "description": "Agência de marketing digital avançado",
+    "status": "NEW"
+  },
+  {
+    "name": "Edson Ramos",
+    "phone": "+55 91 94321-0987",
+    "company": "Ramos Negócios",
+    "description": "Empresa de negócios diversificados",
+    "status": "QUALIFIED"
+  },
+  {
+    "name": "Kelly Nascimento",
+    "email": "kelly.nascimento@salesprocess.com.br",
+    "phone": "+55 92 93210-9876",
+    "company": "Sales Process Optimization",
+    "description": "Otimização de processos de vendas",
+    "status": "NEW"
+  },
+  {
+    "name": "Antônio Carvalho",
+    "email": "antonio@techleadership.com.br",
+    "phone": "+55 93 92109-8765",
+    "company": "Tech Leadership",
+    "description": "Liderança em tecnologia empresarial",
+    "status": "CONTACTED"
+  },
+  {
+    "name": "Luana Correia",
+    "email": "luana.correia@digitalinnovation.com.br",
+    "company": "Digital Innovation Hub",
+    "description": "Hub de inovação digital",
+    "status": "NEW"
+  },
+  {
+    "name": "Renato Aguiar",
+    "phone": "+55 94 91098-7654",
+    "company": "Aguiar Empreendimentos",
+    "description": "Empreendimentos empresariais",
+    "status": "NEW"
+  }
+]
