@@ -32,5 +32,5 @@ EXPOSE 3000/tcp
 # Set environment to production
 ENV NODE_ENV=production
 
-# Run the app
-CMD ["bun", "run", "index.js"]
+# Run migrations and start the app
+CMD ["sh", "-c", "bunx prisma migrate deploy && bun run index.js"]

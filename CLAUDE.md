@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a **Turborepo monorepo** with the following structure:
 - `apps/web/` - Next.js 15 frontend application with React 19
 - `apps/api/` - Bun-based API server using Elysia and GraphQL Yoga
+- `packages/browser/` - Standalone Bun-based REST API for leads management
 - `packages/codegen/` - GraphQL code generation utilities
 - `packages/tsconfig/` - Shared TypeScript configurations
 
@@ -28,6 +29,11 @@ The system uses **GraphQL** for API communication between the frontend and backe
 ### API (apps/api)
 - `bun dev` - Start API server with hot reload
 - Database located at `apps/api/prisma/schema.prisma`
+
+### Browser API (packages/browser)
+- `bun dev` - Start standalone REST API server with hot reload on port 3000
+- Database schema located at `packages/browser/prisma/schema.prisma`
+- Independent Prisma client for leads management
 
 ### Code Generation
 - `bun run generate` (in packages/codegen) - Generate GraphQL types from API schema
@@ -153,3 +159,50 @@ Pipeline analytics chart shows active vs completed pipelines over time:
 
 ### Translation Utilities
 Status and priority translations are handled in table column definitions with mapping objects for consistent Portuguese display throughout the application.
+
+## Browser API Package (packages/browser)
+
+### Overview
+Standalone REST API for leads management built with Bun and Elysia. Provides HTTP endpoints for CRUD operations on leads data with independent database schema.
+
+### API Endpoints
+- **GET /leads** - Retorna todos os leads ativos do banco de dados
+- **POST /leads** - Cria um ou vários leads (aceita objeto único ou array)
+- **DELETE /leads** - Soft delete de leads por ID (marca isActive como false)
+
+### Database Schema
+Uses simplified Lead model with the following fields:
+- `id` (String, UUID, Primary Key)
+- `name` (String, required)
+- `email` (String, required)
+- `description` (String, optional)
+- `phone` (String, optional)
+- `company` (String, optional)
+- `status` (Status enum, default: NEW)
+- `isActive` (Boolean, default: true)
+- `createdAt` (DateTime)
+- `updatedAt` (DateTime)
+
+### Status Enum Values
+```
+NEW, CONTACTED, QUALIFIED, PROPOSAL, WON, LOST, CANCELED, DISCARDED
+```
+
+### Development & Deployment
+- **Development**: `cd packages/browser && bun dev`
+- **Production**: Uses multi-stage Dockerfile with Bun runtime
+- **Docker Build**: `docker build -t prosspecta-leads-api .`
+- **Docker Run**: `docker run -p 3000:3000 -e DATABASE_URL="your_db_url" prosspecta-leads-api`
+
+### File Structure
+```
+packages/browser/
+├── src/
+│   ├── index.ts       # Main API server with routes
+│   └── prisma.ts      # Prisma client configuration
+├── prisma/
+│   └── schema.prisma  # Database schema
+├── Dockerfile         # Production Docker image
+├── .dockerignore      # Docker build exclusions
+└── package.json       # Dependencies and scripts
+```

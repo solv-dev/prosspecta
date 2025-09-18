@@ -6,6 +6,7 @@ import { Providers } from './providers'
 
 const titilliumWeb = Montserrat({
   variable: '--font-sans',
+  subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
