@@ -57,7 +57,7 @@ export async function authGuard(request: Request): Promise<User | null> {
     return await prisma.user.findUnique({
       where: { id: userId, organizationId },
     })
-  } catch (error) {
+  } catch (_error) {
     return null
   }
 }

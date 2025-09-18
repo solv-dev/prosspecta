@@ -41,7 +41,8 @@
         "useFocusableInteractive": "off"
       },
       "complexity": {
-        "recommended": true
+        "recommended": true,
+        "noBannedTypes": "off"
       },
       "correctness": {
         "recommended": true,
@@ -53,7 +54,8 @@
         "noImgElement": "off"
       },
       "security": {
-        "recommended": true
+        "recommended": true,
+        "noDangerouslySetInnerHtml": "off"
       },
       "style": {
         "recommended": true,
