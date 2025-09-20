@@ -2,7 +2,7 @@ import { builder } from '../../shared/builder'
 import { prisma } from '../../shared/prisma'
 import { CreateUserInput, UpdateUserInput, UserWhereInput } from './users.types'
 
-builder.queryField('user', (t) =>
+builder.queryField('user', t =>
   t.prismaField({
     type: 'User',
     args: {
@@ -14,10 +14,10 @@ builder.queryField('user', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
 
-builder.queryField('users', (t) =>
+builder.queryField('users', t =>
   t.prismaField({
     type: ['User'],
     args: {
@@ -35,10 +35,10 @@ builder.queryField('users', (t) =>
         where,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('userCreate', (t) =>
+builder.mutationField('userCreate', t =>
   t.prismaField({
     type: 'User',
     args: {
@@ -75,10 +75,10 @@ builder.mutationField('userCreate', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('userUpdate', (t) =>
+builder.mutationField('userUpdate', t =>
   t.prismaField({
     type: 'User',
     args: {
@@ -109,10 +109,10 @@ builder.mutationField('userUpdate', (t) =>
         data: updatedUser,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('userDelete', (t) =>
+builder.mutationField('userDelete', t =>
   t.prismaField({
     type: 'User',
     args: {
@@ -124,5 +124,5 @@ builder.mutationField('userDelete', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )

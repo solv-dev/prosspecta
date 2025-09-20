@@ -1,4 +1,3 @@
-
 import { generate } from 'generate-password'
 import jwt from 'jsonwebtoken'
 import { authenticateEmail } from '../../common/emails/authenticate-email'
@@ -14,7 +13,7 @@ import {
   RegisterInput,
 } from './auth.types'
 
-builder.mutationField('authenticate', (t) =>
+builder.mutationField('authenticate', t =>
   t.field({
     type: AuthResponse,
     args: {
@@ -50,10 +49,10 @@ builder.mutationField('authenticate', (t) =>
         user: authToken.user,
       }
     },
-  }),
+  })
 )
 
-builder.mutationField('login', (t) =>
+builder.mutationField('login', t =>
   t.field({
     type: 'Boolean',
     args: {
@@ -79,7 +78,7 @@ builder.mutationField('login', (t) =>
       const token = jwt.sign(
         { userId: user.id, organizationId: user.organizationId },
         env.JWT_SECRET,
-        { expiresIn: '7d' },
+        { expiresIn: '7d' }
       )
 
       const expirationDate = new Date()
@@ -108,10 +107,10 @@ builder.mutationField('login', (t) =>
 
       return true
     },
-  }),
+  })
 )
 
-builder.mutationField('register', (t) =>
+builder.mutationField('register', t =>
   t.field({
     type: AuthResponse,
     args: {
@@ -146,7 +145,7 @@ builder.mutationField('register', (t) =>
       const token = jwt.sign(
         { userId: user.id, organizationId: user.organizationId },
         env.JWT_SECRET,
-        { expiresIn: '7d' },
+        { expiresIn: '7d' }
       )
 
       const expirationDate = new Date()
@@ -165,10 +164,10 @@ builder.mutationField('register', (t) =>
         user,
       }
     },
-  }),
+  })
 )
 
-builder.mutationField('refreshToken', (t) =>
+builder.mutationField('refreshToken', t =>
   t.field({
     type: AuthResponse,
     args: {
@@ -202,7 +201,7 @@ builder.mutationField('refreshToken', (t) =>
           organizationId: authToken.user.organizationId,
         },
         env.JWT_SECRET,
-        { expiresIn: '7d' },
+        { expiresIn: '7d' }
       )
 
       const expirationDate = new Date()
@@ -226,10 +225,10 @@ builder.mutationField('refreshToken', (t) =>
         user: authToken.user,
       }
     },
-  }),
+  })
 )
 
-builder.mutationField('logout', (t) =>
+builder.mutationField('logout', t =>
   t.field({
     type: 'Boolean',
     args: {
@@ -252,5 +251,5 @@ builder.mutationField('logout', (t) =>
 
       return true
     },
-  }),
+  })
 )

@@ -6,7 +6,7 @@ export const ContactStatus = builder.enumType(Status, {
 })
 
 export const Contact = builder.prismaObject('Contact', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.exposeID('id'),
     name: t.exposeString('name'),
     email: t.exposeString('email'),
@@ -16,11 +16,11 @@ export const Contact = builder.prismaObject('Contact', {
     isActive: t.exposeBoolean('isActive'),
     createdAt: t.field({
       type: 'String',
-      resolve: (contact) => contact.createdAt.toISOString(),
+      resolve: contact => contact.createdAt.toISOString(),
     }),
     updatedAt: t.field({
       type: 'String',
-      resolve: (contact) => contact.updatedAt.toISOString(),
+      resolve: contact => contact.updatedAt.toISOString(),
     }),
     organization: t.relation('organization'),
     pipelines: t.relation('pipelines'),
@@ -28,7 +28,7 @@ export const Contact = builder.prismaObject('Contact', {
 })
 
 export const CreateContactInput = builder.inputType('CreateContactInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: true }),
     email: t.string({ required: true }),
     phone: t.string({ required: false }),
@@ -39,7 +39,7 @@ export const CreateContactInput = builder.inputType('CreateContactInput', {
 })
 
 export const UpdateContactInput = builder.inputType('UpdateContactInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: false }),
     email: t.string({ required: false }),
     phone: t.string({ required: false }),
@@ -50,7 +50,7 @@ export const UpdateContactInput = builder.inputType('UpdateContactInput', {
 })
 
 export const ContactWhereInput = builder.inputType('ContactWhereInput', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.string({ required: false }),
     name: t.string({ required: false }),
     email: t.string({ required: false }),

@@ -45,7 +45,7 @@ export async function authGuard(request: Request): Promise<User | null> {
           organizationId: authToken.user.organizationId,
         },
         'your-secret-key',
-        { expiresIn: TOKEN_EXPIRATION },
+        { expiresIn: TOKEN_EXPIRATION }
       )
 
       await prisma.authToken.update({

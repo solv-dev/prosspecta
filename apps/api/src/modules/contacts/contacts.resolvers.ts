@@ -7,7 +7,7 @@ import {
   UpdateContactInput,
 } from './contacts.types'
 
-builder.queryField('contact', (t) =>
+builder.queryField('contact', t =>
   t.prismaField({
     type: 'Contact',
     args: {
@@ -21,10 +21,10 @@ builder.queryField('contact', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
 
-builder.queryField('contacts', (t) =>
+builder.queryField('contacts', t =>
   t.prismaField({
     type: ['Contact'],
     args: {
@@ -47,10 +47,10 @@ builder.queryField('contacts', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('contactCreate', (t) =>
+builder.mutationField('contactCreate', t =>
   t.prismaField({
     type: 'Contact',
     args: {
@@ -73,10 +73,10 @@ builder.mutationField('contactCreate', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('contactUpdate', (t) =>
+builder.mutationField('contactUpdate', t =>
   t.prismaField({
     type: 'Contact',
     args: {
@@ -111,10 +111,10 @@ builder.mutationField('contactUpdate', (t) =>
         data: updatedContact,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('contactDelete', (t) =>
+builder.mutationField('contactDelete', t =>
   t.prismaField({
     type: 'Contact',
     args: {
@@ -128,5 +128,5 @@ builder.mutationField('contactDelete', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )

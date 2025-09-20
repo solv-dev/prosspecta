@@ -6,7 +6,7 @@ export const UserRole = builder.enumType(Role, {
 })
 
 export const User = builder.prismaObject('User', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.exposeID('id'),
     name: t.exposeString('name'),
     email: t.exposeString('email'),
@@ -14,11 +14,11 @@ export const User = builder.prismaObject('User', {
     isActive: t.exposeBoolean('isActive'),
     createdAt: t.field({
       type: 'String',
-      resolve: (user) => user.createdAt.toISOString(),
+      resolve: user => user.createdAt.toISOString(),
     }),
     updatedAt: t.field({
       type: 'String',
-      resolve: (user) => user.updatedAt.toISOString(),
+      resolve: user => user.updatedAt.toISOString(),
     }),
 
     organization: t.relation('organization'),
@@ -28,7 +28,7 @@ export const User = builder.prismaObject('User', {
 })
 
 export const CreateUserInput = builder.inputType('CreateUserInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: true }),
     email: t.string({ required: true }),
     role: t.field({ type: UserRole, required: false }),
@@ -38,7 +38,7 @@ export const CreateUserInput = builder.inputType('CreateUserInput', {
 })
 
 export const UpdateUserInput = builder.inputType('UpdateUserInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: false }),
     email: t.string({ required: false }),
     role: t.field({ type: UserRole, required: false }),
@@ -47,7 +47,7 @@ export const UpdateUserInput = builder.inputType('UpdateUserInput', {
 })
 
 export const UserWhereInput = builder.inputType('UserWhereInput', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.string({ required: false }),
     name: t.string({ required: false }),
     email: t.string({ required: false }),

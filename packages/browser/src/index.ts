@@ -24,7 +24,10 @@ const app = new Elysia()
         // Validar que cada lead tem pelo menos email ou telefone
         for (const lead of leads) {
           if (!lead.email && !lead.phone) {
-            return { success: false, error: 'Cada lead deve ter pelo menos email ou telefone' }
+            return {
+              success: false,
+              error: 'Cada lead deve ter pelo menos email ou telefone',
+            }
           }
         }
 

@@ -3,7 +3,7 @@ import { builder } from '../../shared/builder'
 import { prisma } from '../../shared/prisma'
 import { CreateLeadInput, LeadWhereInput, UpdateLeadInput } from './leads.types'
 
-builder.queryField('lead', (t) =>
+builder.queryField('lead', t =>
   t.prismaField({
     type: 'Lead',
     args: {
@@ -17,10 +17,10 @@ builder.queryField('lead', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
 
-builder.queryField('leads', (t) =>
+builder.queryField('leads', t =>
   t.prismaField({
     type: ['Lead'],
     args: {
@@ -43,10 +43,10 @@ builder.queryField('leads', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('leadCreate', (t) =>
+builder.mutationField('leadCreate', t =>
   t.prismaField({
     type: 'Lead',
     args: {
@@ -69,10 +69,10 @@ builder.mutationField('leadCreate', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('leadUpdate', (t) =>
+builder.mutationField('leadUpdate', t =>
   t.prismaField({
     type: 'Lead',
     args: {
@@ -109,10 +109,10 @@ builder.mutationField('leadUpdate', (t) =>
         data: updatedLead,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('leadDelete', (t) =>
+builder.mutationField('leadDelete', t =>
   t.prismaField({
     type: 'Lead',
     args: {
@@ -126,5 +126,5 @@ builder.mutationField('leadDelete', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )

@@ -6,7 +6,7 @@ export const LeadStatus = builder.enumType(Status, {
 })
 
 export const Lead = builder.prismaObject('Lead', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.exposeID('id'),
     name: t.exposeString('name'),
     description: t.exposeString('description', { nullable: true }),
@@ -17,11 +17,11 @@ export const Lead = builder.prismaObject('Lead', {
     isActive: t.exposeBoolean('isActive'),
     createdAt: t.field({
       type: 'String',
-      resolve: (lead) => lead.createdAt.toISOString(),
+      resolve: lead => lead.createdAt.toISOString(),
     }),
     updatedAt: t.field({
       type: 'String',
-      resolve: (lead) => lead.updatedAt.toISOString(),
+      resolve: lead => lead.updatedAt.toISOString(),
     }),
     organization: t.relation('organization'),
     pipelines: t.relation('pipelines'),
@@ -29,7 +29,7 @@ export const Lead = builder.prismaObject('Lead', {
 })
 
 export const CreateLeadInput = builder.inputType('CreateLeadInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: true }),
     description: t.string({ required: false }),
     email: t.string({ required: true }),
@@ -41,7 +41,7 @@ export const CreateLeadInput = builder.inputType('CreateLeadInput', {
 })
 
 export const UpdateLeadInput = builder.inputType('UpdateLeadInput', {
-  fields: (t) => ({
+  fields: t => ({
     name: t.string({ required: false }),
     description: t.string({ required: false }),
     email: t.string({ required: false }),
@@ -53,7 +53,7 @@ export const UpdateLeadInput = builder.inputType('UpdateLeadInput', {
 })
 
 export const LeadWhereInput = builder.inputType('LeadWhereInput', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.string({ required: false }),
     name: t.string({ required: false }),
     email: t.string({ required: false }),

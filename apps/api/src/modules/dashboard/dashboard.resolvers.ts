@@ -4,7 +4,7 @@ import { builder } from '../../shared/builder'
 import { prisma } from '../../shared/prisma'
 import { DashboardMetrics } from './dashboard.types'
 
-builder.queryField('dashboardMetrics', (t) =>
+builder.queryField('dashboardMetrics', t =>
   t.field({
     type: DashboardMetrics,
     resolve: async (_parent, _, _ctx, _info) => {
@@ -26,7 +26,7 @@ builder.queryField('dashboardMetrics', (t) =>
         23,
         59,
         59,
-        999,
+        999
       )
 
       const [totalLeads, newLeadsThisMonth, newLeadsLastMonth, leadsInProcess] =
@@ -85,5 +85,5 @@ builder.queryField('dashboardMetrics', (t) =>
           Math.round(monthlyGrowthPercentage * 100) / 100,
       }
     },
-  }),
+  })
 )

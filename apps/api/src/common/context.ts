@@ -6,7 +6,7 @@ export type GraphQLContext = {
 }
 
 export async function createContext(
-  initialContext: any,
+  initialContext: any
 ): Promise<GraphQLContext> {
   return {
     currentUser: await authGuard(initialContext.request),

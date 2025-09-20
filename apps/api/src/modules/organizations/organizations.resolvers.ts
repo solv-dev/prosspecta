@@ -7,7 +7,7 @@ import {
   UpdateOrganizationInput,
 } from './organizations.types'
 
-builder.queryField('organization', (t) =>
+builder.queryField('organization', t =>
   t.prismaField({
     type: 'Organization',
     args: {
@@ -21,10 +21,10 @@ builder.queryField('organization', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
 
-builder.queryField('organizations', (t) =>
+builder.queryField('organizations', t =>
   t.prismaField({
     type: ['Organization'],
     args: {
@@ -44,10 +44,10 @@ builder.queryField('organizations', (t) =>
         where,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('organizationCreate', (t) =>
+builder.mutationField('organizationCreate', t =>
   t.prismaField({
     type: 'Organization',
     args: {
@@ -64,10 +64,10 @@ builder.mutationField('organizationCreate', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('organizationUpdate', (t) =>
+builder.mutationField('organizationUpdate', t =>
   t.prismaField({
     type: 'Organization',
     args: {
@@ -99,10 +99,10 @@ builder.mutationField('organizationUpdate', (t) =>
         data: updatedOrganization,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('organizationDelete', (t) =>
+builder.mutationField('organizationDelete', t =>
   t.prismaField({
     type: 'Organization',
     args: {
@@ -119,5 +119,5 @@ builder.mutationField('organizationDelete', (t) =>
         },
       })
     },
-  }),
+  })
 )

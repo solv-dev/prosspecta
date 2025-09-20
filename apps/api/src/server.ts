@@ -9,10 +9,10 @@ const app = new Elysia()
       schema,
       context: createContext,
       graphiql: true,
-    }),
+    })
   )
   .listen(3333)
 
 console.log(
-  `🚀 Prosspecta API is running at ${app.server?.hostname}:${app.server?.port}`,
+  `🚀 Prosspecta API is running at ${app.server?.hostname}:${app.server?.port}`
 )

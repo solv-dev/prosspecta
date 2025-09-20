@@ -10,7 +10,7 @@ export interface DashboardMetricsType {
 export const DashboardMetrics = builder
   .objectRef<DashboardMetricsType>('DashboardMetrics')
   .implement({
-    fields: (t) => ({
+    fields: t => ({
       totalLeads: t.exposeInt('totalLeads', {
         description: 'Número total de leads',
       }),

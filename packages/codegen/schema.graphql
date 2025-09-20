@@ -101,13 +101,21 @@ input CreateUserInput {
 }
 
 type DashboardMetrics {
-  """Leads em processo (Contacted, Qualified, Proposal)"""
+  """
+  Leads em processo (Contacted, Qualified, Proposal)
+  """
   leadsInProcess: Int
-  """Porcentagem de crescimento mensal"""
+  """
+  Porcentagem de crescimento mensal
+  """
   monthlyGrowthPercentage: Float
-  """Novos leads este mês"""
+  """
+  Novos leads este mês
+  """
   newLeadsThisMonth: Int
-  """Número total de leads"""
+  """
+  Número total de leads
+  """
   totalLeads: Int
 }
 

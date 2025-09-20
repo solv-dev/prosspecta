@@ -10,7 +10,7 @@ export const PipelinePriority = builder.enumType(Priority, {
 })
 
 export const Pipeline = builder.prismaObject('Pipeline', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.exposeID('id'),
     title: t.exposeString('title'),
     description: t.exposeString('description', { nullable: true }),
@@ -19,11 +19,11 @@ export const Pipeline = builder.prismaObject('Pipeline', {
     isActive: t.exposeBoolean('isActive'),
     createdAt: t.field({
       type: 'String',
-      resolve: (pipeline) => pipeline.createdAt.toISOString(),
+      resolve: pipeline => pipeline.createdAt.toISOString(),
     }),
     updatedAt: t.field({
       type: 'String',
-      resolve: (pipeline) => pipeline.updatedAt.toISOString(),
+      resolve: pipeline => pipeline.updatedAt.toISOString(),
     }),
     organization: t.relation('organization'),
     assignedUser: t.relation('assignedUser', { nullable: true }),
@@ -33,7 +33,7 @@ export const Pipeline = builder.prismaObject('Pipeline', {
 })
 
 export const CreatePipelineInput = builder.inputType('CreatePipelineInput', {
-  fields: (t) => ({
+  fields: t => ({
     title: t.string({ required: true }),
     description: t.string({ required: false }),
     status: t.field({ type: PipelineStatus, required: false }),
@@ -46,7 +46,7 @@ export const CreatePipelineInput = builder.inputType('CreatePipelineInput', {
 })
 
 export const UpdatePipelineInput = builder.inputType('UpdatePipelineInput', {
-  fields: (t) => ({
+  fields: t => ({
     title: t.string({ required: false }),
     description: t.string({ required: false }),
     status: t.field({ type: PipelineStatus, required: false }),
@@ -59,7 +59,7 @@ export const UpdatePipelineInput = builder.inputType('UpdatePipelineInput', {
 })
 
 export const PipelineWhereInput = builder.inputType('PipelineWhereInput', {
-  fields: (t) => ({
+  fields: t => ({
     id: t.string({ required: false }),
     title: t.string({ required: false }),
     status: t.field({ type: PipelineStatus, required: false }),

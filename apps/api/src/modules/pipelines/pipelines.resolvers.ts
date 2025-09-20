@@ -7,7 +7,7 @@ import {
   UpdatePipelineInput,
 } from './pipelines.types'
 
-builder.queryField('pipeline', (t) =>
+builder.queryField('pipeline', t =>
   t.prismaField({
     type: 'Pipeline',
     args: {
@@ -21,10 +21,10 @@ builder.queryField('pipeline', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
 
-builder.queryField('pipelines', (t) =>
+builder.queryField('pipelines', t =>
   t.prismaField({
     type: ['Pipeline'],
     args: {
@@ -47,10 +47,10 @@ builder.queryField('pipelines', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('pipelineCreate', (t) =>
+builder.mutationField('pipelineCreate', t =>
   t.prismaField({
     type: 'Pipeline',
     args: {
@@ -91,10 +91,10 @@ builder.mutationField('pipelineCreate', (t) =>
         },
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('pipelineUpdate', (t) =>
+builder.mutationField('pipelineUpdate', t =>
   t.prismaField({
     type: 'Pipeline',
     args: {
@@ -140,10 +140,10 @@ builder.mutationField('pipelineUpdate', (t) =>
         data: updatedPipeline,
       })
     },
-  }),
+  })
 )
 
-builder.mutationField('pipelineDelete', (t) =>
+builder.mutationField('pipelineDelete', t =>
   t.prismaField({
     type: 'Pipeline',
     args: {
@@ -157,5 +157,5 @@ builder.mutationField('pipelineDelete', (t) =>
         where: { id: args.id },
       })
     },
-  }),
+  })
 )
