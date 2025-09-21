@@ -206,3 +206,23 @@ packages/browser/
 ├── .dockerignore      # Docker build exclusions
 └── package.json       # Dependencies and scripts
 ```
+
+## Environment & Configuration
+
+### Environment Variables
+- Uses shared environment configuration via `packages/env/`
+- Environment files loaded with `dotenv-cli` from project root
+- API loads environment from `../../.env` relative to `apps/api/`
+
+### Common Issues & Troubleshooting
+
+#### API Development Server
+If `bun dev` fails with "spawn --watch ENOENT" error:
+- This indicates the watch flag is not being passed correctly to bun
+- Ensure the dev script in `apps/api/package.json` is: `"dev": "bun run with-env bun --watch src/server.ts"`
+- The `with-env` script should be: `"with-env": "dotenv -e ../../.env --"`
+
+#### Dependency Management
+- Use `bun install` instead of npm/yarn
+- Workspace dependencies use `workspace:*` protocol
+- All packages share bun.lock from repository root
