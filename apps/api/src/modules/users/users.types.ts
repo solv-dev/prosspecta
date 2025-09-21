@@ -20,7 +20,6 @@ export const User = builder.prismaObject('User', {
       type: 'String',
       resolve: user => user.updatedAt.toISOString(),
     }),
-
     organization: t.relation('organization'),
     authTokens: t.relation('authTokens'),
     assignedPipelines: t.relation('assignedPipelines'),

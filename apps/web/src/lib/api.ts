@@ -1,8 +1,9 @@
+import { env } from '@prosspecta/env'
 import { type CookiesFn, getCookie } from 'cookies-next'
 import ky from 'ky'
 
 export const api = ky.create({
-  prefixUrl: process.env.NEXT_PUBLIC_API_URL,
+  prefixUrl: env.NEXT_PUBLIC_API_URL,
   hooks: {
     beforeRequest: [
       async request => {

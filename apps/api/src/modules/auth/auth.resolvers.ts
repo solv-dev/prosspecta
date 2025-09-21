@@ -1,10 +1,10 @@
+import { env } from '@prosspecta/env'
 import { generate } from 'generate-password'
 import jwt from 'jsonwebtoken'
 import { authenticateEmail } from '../../common/emails/authenticate-email'
-import { env } from '../../lib/env'
-import { resend } from '../../lib/resend'
 import { builder } from '../../shared/builder'
 import { prisma } from '../../shared/prisma'
+import { resend } from '../../shared/resend'
 import {
   AuthenticateInput,
   AuthResponse,

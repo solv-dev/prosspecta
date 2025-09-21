@@ -1,6 +1,6 @@
 import type { User } from '@prisma/client'
+import { env } from '@prosspecta/env'
 import jwt, { type JwtPayload, verify } from 'jsonwebtoken'
-import { env } from '../../lib/env'
 import { prisma } from '../../shared/prisma'
 
 const TOKEN_EXPIRATION = '7d'

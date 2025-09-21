@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "bun run with-env bun next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -16,6 +17,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@hookform/resolvers": "^5.2.2",
     "@prosspecta/codegen": "workspace:*",
+    "@prosspecta/env": "workspace:*",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -38,6 +40,7 @@
     "clsx": "^2.1.1",
     "cookies-next": "^6.1.0",
     "date-fns": "^4.1.0",
+    "dotenv-cli": "^10.0.0",
     "jotai": "^2.14.0",
     "js-cookie": "^3.0.5",
     "ky": "^1.10.0",

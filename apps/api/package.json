@@ -3,15 +3,18 @@
   "version": "0.0.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/server.ts"
+    "dev": "bun run with-env bun --watch src/server.ts",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@elysiajs/graphql-yoga": "^1.4.0",
     "@elysiajs/jwt": "^1.4.0",
     "@pothos/plugin-prisma": "^4.11.0",
     "@prisma/client": "^6.16.1",
+    "@prosspecta/env": "workspace:*",
     "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^3.0.2",
+    "dotenv-cli": "^10.0.0",
     "elysia": "latest",
     "generate-password": "^1.7.1",
     "graphql": "^16.11.0",
